@@ -1,0 +1,51 @@
+{
+  "name": "remark-notes-plugin",
+  "version": "0.0.1",
+  "description": "A remark plugin that transforms markdown quotes into styled note elements",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "styles.css"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./styles.css"
+  },
+  "scripts": {
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "build:css": "postcss styles.css -o dist/styles.css",
+    "watch:css": "postcss styles.css -o dist/styles.css --watch",
+    "build": "yarn build:ts && yarn build:css",
+    "watch": "yarn watch:ts & yarn watch:css",
+    "test": "node --loader ts-node/esm test.ts"
+  },
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "markdown",
+    "notes",
+    "astro"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "hast-util-to-html": "^9.0.5",
+    "mdast": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "remark": "^15.0.1",
+    "unified": "^11.0.4",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
