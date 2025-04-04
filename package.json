@@ -1,18 +1,24 @@
 {
   "name": "remark-notes-plugin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A remark plugin that transforms markdown quotes into styled note elements",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rishichawda/remark-notes-plugin/issues"
+  },
+  "homepage": "https://github.com/rishichawda/remark-notes-plugin#readme",
+  "author": "rishichawda",
+  "repository": {
+    "url": "https://github.com/rishichawda/remark-notes-plugin.git"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "styles.css"
+    "dist/",
+    "LICENSE",
+    "README.md"
   ],
-  "exports": {
-    ".": "./dist/index.js",
-    "./styles.css": "./styles.css"
-  },
   "scripts": {
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
@@ -29,8 +35,6 @@
     "notes",
     "astro"
   ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "hast-util-to-html": "^9.0.5",
     "mdast": "^3.0.0",
