@@ -1,6 +1,6 @@
 {
   "name": "remark-notes-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A remark plugin that transforms markdown quotes into styled note elements",
   "license": "MIT",
   "bugs": {

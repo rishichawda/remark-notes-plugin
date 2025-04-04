@@ -5,6 +5,9 @@ A powerful TypeScript remark plugin that transforms markdown blockquotes into be
 ![npm](https://img.shields.io/npm/v/remark-notes-plugin)
 ![License](https://img.shields.io/npm/l/remark-notes-plugin)
 
+> [!note]
+> This was built for my AstroJS website but should work with any project.
+
 ## ✨ Features
 
 - 🎨 **5 Beautiful Note Types** - Note, Tip, Important, Quote, and Bonus
@@ -88,7 +91,7 @@ The plugin supports five distinct types of notes, each with its own unique style
 
 ## 🎨 Styling
 
-Include the provided `styles.css` in your project to get the default styling for the notes. The plugin uses a modular class structure that makes it easy to customize the appearance:
+Default styles are loaded automatically when you use the plugin. You can also modify the styles since the plugin uses a modular class structure that makes it easy to customize the appearance:
 
 ### Base Classes
 
