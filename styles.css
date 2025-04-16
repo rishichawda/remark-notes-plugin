@@ -112,15 +112,15 @@
 
 /* Note type: Tip (Light Blue - same as Note) */
 .remark-note.tip {
-  background-color: #00B7EB10;
-  border-color: #00B7EB;
+  background-color: #7ccf0010;
+  border-color: #7ccf00;
   box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
 }
 
 .remark-note.tip .remark-note-icon > svg {
-  stroke: #00B7EB;
+  stroke: #7ccf00;
 }
 
 .remark-note.tip .remark-note-title {
-  color: #00B7EB;
+  color: #7ccf00;
 }
