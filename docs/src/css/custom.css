@@ -1,0 +1,114 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Note type colors */
+  --note-color: #4285f4;
+  --tip-color: #0f9d58;
+  --important-color: #db4437;
+  --quote-color: #9c27b0;
+  --bonus-color: #ff9800;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Note type colors - slightly brighter for dark mode */
+  --note-color: #669df6;
+  --tip-color: #34a853;
+  --important-color: #ea4335;
+  --quote-color: #b455c9;
+  --bonus-color: #ffa726;
+}
+
+/* Styles for remark-notes-plugin notes */
+/* .remark-note {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 0.25rem solid var(--note-color);
+  background-color: var(--ifm-color-emphasis-100);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+} */
+
+/* .remark-note-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--note-color);
+} */
+
+/* Styles for different note types */
+/* .remark-note {
+  border-left-color: var(--note-color);
+}
+
+.remark-note-tip {
+  border-left-color: var(--tip-color);
+}
+
+.remark-note-tip .remark-note-title {
+  color: var(--tip-color);
+}
+
+.remark-note-important {
+  border-left-color: var(--important-color);
+}
+
+.remark-note-important .remark-note-title {
+  color: var(--important-color);
+}
+
+.remark-note-quote {
+  border-left-color: var(--quote-color);
+}
+
+.remark-note-quote .remark-note-title {
+  color: var(--quote-color);
+}
+
+.remark-note-bonus {
+  border-left-color: var(--bonus-color);
+}
+
+.remark-note-bonus .remark-note-title {
+  color: var(--bonus-color);
+} */
+
+/* Dark mode styles */
+[data-theme='dark'] .remark-note {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Demo section styles */
+.demo-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.demo-section h3 {
+  margin-top: 0;
+}

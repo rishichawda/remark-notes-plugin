@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" rx="20" fill="#F8F9FA"/>
+  
+  <!-- Center content container -->
+  <g transform="translate(250, 115) scale(1.8)">
+    <!-- Note outline -->
+    <rect x="30" y="30" width="140" height="140" rx="8" fill="#FFFFFF" stroke="#E9ECEF" stroke-width="2"/>
+    <!-- Left border accent -->
+    <rect x="30" y="30" width="8" height="140" rx="2" fill="#25C2A0"/>
+    <!-- Note title -->
+    <rect x="50" y="50" width="80" height="10" rx="2" fill="#25C2A0"/>
+    <!-- Note content lines -->
+    <rect x="50" y="70" width="100" height="6" rx="2" fill="#E9ECEF"/>
+    <rect x="50" y="86" width="90" height="6" rx="2" fill="#E9ECEF"/>
+    <rect x="50" y="102" width="110" height="6" rx="2" fill="#E9ECEF"/>
+    <rect x="50" y="118" width="80" height="6" rx="2" fill="#E9ECEF"/>
+    <!-- Markdown blockquote symbol -->
+    <text x="166" y="170" font-family="monospace" font-size="34" font-weight="bold" fill="#ADB5BD">&gt;</text>
+    <!-- Quote mark -->
+    <text x="50" y="150" font-family="serif" font-size="40" font-weight="bold" fill="#25C2A0">"</text>
+  </g>
+  
+  <!-- Project name -->
+  <text x="600" y="500" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#333333" text-anchor="middle">Remark Notes Plugin</text>
+  <text x="600" y="550" font-family="Arial, sans-serif" font-size="32" fill="#666666" text-anchor="middle">Beautiful and customizable note components for your markdown</text>
+</svg>
