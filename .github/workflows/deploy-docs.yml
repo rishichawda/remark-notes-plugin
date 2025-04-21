@@ -1,0 +1,77 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - '.github/workflows/deploy-docs.yml'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: docs/yarn.lock
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install Dependencies
+        run: |
+          cd docs
+          yarn install --frozen-lockfile
+
+      # Import plugin into the docs to showcase examples
+      - name: Build Plugin
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Copy Plugin to Docs
+        run: |
+          mkdir -p docs/node_modules/remark-notes-plugin/dist
+          cp -r dist/* docs/node_modules/remark-notes-plugin/dist/
+
+      - name: Build Documentation Site
+        run: |
+          cd docs
+          yarn build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs/build
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
