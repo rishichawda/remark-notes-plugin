@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Getting Started',
+      collapsed: false,
       items: [
         'getting-started/installation',
         'getting-started/usage',
@@ -27,6 +28,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Examples',
+      collapsed: false,
       items: [
         'examples/note-types',
         'examples/customization',
