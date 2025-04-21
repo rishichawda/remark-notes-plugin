@@ -1,0 +1,112 @@
+.repoCard {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.repoCard:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.githubIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.repoName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.repoName:hover {
+  text-decoration: underline;
+}
+
+.description {
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1rem;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.stat:hover {
+  color: var(--ifm-color-primary);
+}
+
+.forkIcon,
+.issueIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.statIcon {
+  margin-right: 4px;
+}
+
+.statText {
+  font-size: 0.9rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.license,
+.branch {
+  display: flex;
+  align-items: center;
+}
+
+.licenseIcon,
+.branchIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.loading,
+.error {
+  padding: 1rem;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.error {
+  color: var(--ifm-color-danger);
+}
