@@ -46,11 +46,10 @@
     "astro"
   ],
   "dependencies": {
-    "hast-util-to-html": "^9.0.5",
+    "hast": "^1.0.0",
     "mdast": "^3.0.0",
-    "mdast-util-to-hast": "^13.2.0",
-    "remark": "^15.0.1",
     "unified": "^11.0.4",
+    "unist": "^0.0.1",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
