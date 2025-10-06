@@ -1,4 +1,4 @@
-name: Test
+name: Pull Request tests
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: plugin/tests (ubuntu-latest, Node v${{ matrix.node-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,6 +37,7 @@ jobs:
         run: yarn build:ts
 
   lint:
+    name: plugin/lint (ubuntu-latest, Node v22)
     runs-on: ubuntu-latest
     
     steps:
@@ -58,6 +60,7 @@ jobs:
         run: yarn build:ts --noEmit
 
   docs-build:
+    name: docs/build (ubuntu-latest, Node v18)
     runs-on: ubuntu-latest
     
     steps:
