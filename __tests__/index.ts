@@ -7,6 +7,7 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkNotes from '../index.js'
 import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import rehypeParse from 'rehype-parse'
 
@@ -40,12 +41,13 @@ for (const type of FIXTURE_TYPES) {
     const inputMd = readFileSync(inputPath, 'utf8')
     const expectedHtml = readFileSync(outputPath, 'utf8')
 
-    // Run plugin pipeline
+    // Run plugin pipeline (testing zero-config with allowDangerousHtml)
     const result = await unified()
       .use(remarkParse)
       .use(remarkNotes)
       .use(remarkRehype, { allowDangerousHtml: true })
-      .use(rehypeStringify, { allowDangerousHtml: true })
+      .use(rehypeRaw)  // Process raw HTML nodes (SVG icons and element structure)
+      .use(rehypeStringify)
       .process(inputMd)
     const actualHtml = String(result)
 
