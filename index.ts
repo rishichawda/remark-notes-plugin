@@ -1,9 +1,9 @@
 import { visit } from 'unist-util-visit'
 import type { Node, Parent } from 'unist'
 import type { Blockquote, Paragraph, Text } from 'mdast'
-import type { NoteNode } from './lib/types/index.js'
 import { NOTE_TYPES } from './lib/types/index.js'
 import { styles } from './lib/styles.js'
+import { createNoteStructure } from './lib/node-structure.js'
 
 export default function remarkNotes() {
   let hasInjectedStyles = false
@@ -62,48 +62,14 @@ export default function remarkNotes() {
       }
       
       // Get the icon for this note type
-      const noteConfig = NOTE_TYPES[noteType]
-      const icon = noteConfig.icon
+      const noteConfig = NOTE_TYPES[noteType];
+      const iconSvg = noteConfig.icon;
       
-      // Create header with icon and title
-      const headerNode = {
-        type: 'html',
-        value: `<div class="remark-note-header"><span class="remark-note-icon">${icon}</span><span class="remark-note-title">${noteType}</span></div>`
-      }
+      // Create the note structure using proper mdast nodes
+      const noteContainer = createNoteStructure(noteType, iconSvg, children);
       
-      const contentWrapperStart = {
-        type: 'html',
-        value: '<div class="remark-note-content">'
-      }
-      
-      const contentWrapperEnd = {
-        type: 'html',
-        value: '</div>'
-      }
-      
-      // Wrap content with header and content wrapper
-      const wrappedChildren = [
-        headerNode,
-        contentWrapperStart,
-        ...children,
-        contentWrapperEnd
-      ]
-      
-      // Create the custom NoteNode
-      const noteNode = {
-        type: 'note',
-        noteType: noteType,
-        data: {
-          hName: 'div',
-          hProperties: {
-            className: ['remark-note', noteType]
-          }
-        },
-        children: wrappedChildren
-      } as NoteNode
-      
-      // Replace the blockquote with the note node in the parent
-      (parent as Parent).children[index] = noteNode as any
+      // Replace the blockquote with the container
+      (parent as Parent).children[index] = noteContainer;
     })
   }
 }
