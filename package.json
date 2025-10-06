@@ -37,7 +37,8 @@
     "test:styles": "node --loader ts-node/esm __tests__/styles.ts",
     "test:custom-prefix": "node --loader ts-node/esm __tests__/custom-prefix.ts",
     "test:validation": "node --loader ts-node/esm __tests__/validation.ts",
-    "test:all": "yarn test && yarn test:styles && yarn test:custom-prefix && yarn test:validation",
+    "test:edge-cases": "node --loader ts-node/esm __tests__/edge-cases.ts",
+    "test:all": "yarn test && yarn test:styles && yarn test:custom-prefix && yarn test:validation && yarn test:edge-cases",
     "generate:fixtures": "node --loader ts-node/esm __tests__/generate-fixtures.ts"
   },
   "keywords": [
