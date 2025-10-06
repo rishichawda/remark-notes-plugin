@@ -35,7 +35,8 @@
     "watch": "yarn watch:ts & yarn watch:css",
     "test": "node --loader ts-node/esm __tests__/index.ts",
     "test:styles": "node --loader ts-node/esm __tests__/styles.ts",
-    "test:all": "yarn test && yarn test:styles",
+    "test:custom-prefix": "node --loader ts-node/esm __tests__/custom-prefix.ts",
+    "test:all": "yarn test && yarn test:styles && yarn test:custom-prefix",
     "generate:fixtures": "node --loader ts-node/esm __tests__/generate-fixtures.ts"
   },
   "keywords": [

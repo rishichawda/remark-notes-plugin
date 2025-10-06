@@ -19,7 +19,7 @@ test('remark-notes: styles should be automatically injected', async () => {
   const output = String(file)
   
   assert.ok(output.includes('<style>'), 'Styles should be injected')
-  assert.ok(output.includes('.remark-note'), 'CSS classes should be in injected styles')
+  assert.ok(output.includes('[class*="remark-note-icon"]'), 'CSS attribute selectors should be in injected styles')
 })
 
 test('remark-notes: styles should only be injected once', async () => {
