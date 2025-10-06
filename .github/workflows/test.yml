@@ -1,0 +1,74 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'lib/**'
+      - 'index.ts'
+      - 'styles.css'
+      - 'package.json'
+      - '__tests__/**'
+      - 'tsconfig.json'
+      - '.github/workflows/test.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'lib/**'
+      - 'index.ts'
+      - 'styles.css'
+      - 'package.json'
+      - '__tests__/**'
+      - 'tsconfig.json'
+      - '.github/workflows/test.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Run all tests
+        run: yarn test:all
+
+      - name: Check for TypeScript errors
+        run: yarn build:ts
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Check TypeScript types
+        run: yarn build:ts --noEmit
