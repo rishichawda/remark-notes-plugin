@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'lib/**'
+      - 'index.ts'
+      - 'styles.css'
+      - 'package.json'
       - 'README.md'
       - '.github/workflows/deploy-docs.yml'
 
@@ -39,21 +43,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install Dependencies
-        run: |
-          cd docs
-          yarn install --frozen-lockfile
-
-      # Import plugin into the docs to showcase examples
-      - name: Build Plugin
+      - name: Install Root Dependencies & Build Plugin
         run: |
           yarn install --frozen-lockfile
           yarn build
 
-      - name: Copy Plugin to Docs
+      - name: Install Docs Dependencies
         run: |
-          mkdir -p docs/node_modules/remark-notes-plugin/dist
-          cp -r dist/* docs/node_modules/remark-notes-plugin/dist/
+          cd docs
+          yarn install --frozen-lockfile
 
       - name: Build Documentation Site
         run: |
