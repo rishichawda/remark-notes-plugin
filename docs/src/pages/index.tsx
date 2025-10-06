@@ -8,7 +8,7 @@ import GitHubRepo from '@site/src/components/GitHubRepo';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
-import 'remark-notes-plugin/dist/styles.css';
+import 'remark-notes-plugin/styles.css';
 
 // Import the SVG logo
 import Logo from '@site/static/img/logo.svg';
