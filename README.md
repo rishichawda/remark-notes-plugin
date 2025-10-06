@@ -22,10 +22,13 @@ npm install remark-notes-plugin
 
 ## 🚀 Usage
 
+### Basic Usage
+
 ```typescript
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
-import remarkStringify from 'remark-stringify'
+import remarkRehype from 'remark-rehype'
+import rehypeStringify from 'rehype-stringify'
 import remarkNotes from 'remark-notes-plugin'
 
 const markdown = `
@@ -48,10 +51,38 @@ const markdown = `
 const file = await unified()
   .use(remarkParse)
   .use(remarkNotes)
-  .use(remarkStringify)
+  .use(remarkRehype)
+  .use(rehypeStringify)
   .process(markdown)
 
 console.log(String(file))
+```
+
+### Configuration Options
+
+```typescript
+import remarkNotes from 'remark-notes-plugin'
+
+// Default configuration (styles are auto-injected)
+unified().use(remarkNotes)
+
+// Custom class prefix
+unified().use(remarkNotes, { 
+  classPrefix: 'my-callout' 
+})
+// Generates classes like: my-callout-remark-note, my-callout-remark-note-tip, etc.
+
+// Disable automatic style injection (import CSS manually)
+unified().use(remarkNotes, { 
+  injectStyles: false 
+})
+// Then import: import 'remark-notes-plugin/styles.css'
+
+// Both options
+unified().use(remarkNotes, { 
+  classPrefix: 'custom',
+  injectStyles: false 
+})
 ```
 
 ## 📝 Note Types
@@ -90,9 +121,35 @@ The plugin supports five distinct types of notes, each with its own unique style
 
 ## 🎨 Styling
 
-Default styles are loaded automatically when you use the plugin. You can also modify the styles since the plugin uses a modular class structure that makes it easy to customize the appearance:
+By default, styles are automatically injected into your document. You can customize this behavior:
 
-### Base Classes
+### Automatic Style Injection (Default)
+
+Styles are included automatically when you use the plugin with default settings:
+
+```typescript
+unified().use(remarkNotes) // Styles auto-injected
+```
+
+### Manual Style Import
+
+If you prefer to manage styles yourself (e.g., for SSR or custom build tools), disable auto-injection:
+
+```typescript
+unified().use(remarkNotes, { injectStyles: false })
+```
+
+Then manually import the CSS:
+
+```typescript
+import 'remark-notes-plugin/styles.css'
+```
+
+### Customizing Styles
+
+The plugin uses a modular class structure that makes it easy to customize the appearance:
+
+#### Base Classes
 
 - `.remark-note` - Base container for all note types
 - `.remark-note-header` - Note header container
@@ -100,24 +157,39 @@ Default styles are loaded automatically when you use the plugin. You can also mo
 - `.remark-note-title` - Note title styling
 - `.remark-note-content` - Note content container
 
-### Type-Specific Classes
+#### Type-Specific Classes
 
-- `.remark-note.note` - Note type styling
-- `.remark-note.tip` - Tip type styling
-- `.remark-note.important` - Important type styling
-- `.remark-note.quote` - Quote type styling
-- `.remark-note.bonus` - Bonus type styling
+- `.remark-note-note` - Note type styling
+- `.remark-note-tip` - Tip type styling
+- `.remark-note-important` - Important type styling
+- `.remark-note-quote` - Quote type styling
+- `.remark-note-bonus` - Bonus type styling
 
-### Customization Example
+#### Custom Class Prefix
+
+You can add a custom prefix to all CSS classes:
+
+```typescript
+unified().use(remarkNotes, { classPrefix: 'my-callout' })
+```
+
+This generates classes like:
+
+- `.my-callout-remark-note`
+- `.my-callout-remark-note-tip`
+- `.my-callout-remark-note-header`
+- etc.
+
+#### Customization Example
 
 ```css
 /* Example: Customize the Note type */
-.remark-note.note {
+.remark-note-note {
   background-color: #your-color;
   border-color: #your-border-color;
 }
 
-.remark-note.note .remark-note-title {
+.remark-note-note .remark-note-title {
   color: #your-text-color;
 }
 ```
@@ -152,4 +224,4 @@ Please ensure your pull request passes all tests and includes appropriate docume
 
 ---
 
-⭐️ If you find this plugin useful, please consider giving it a star on GitHub! ⭐️ 
+⭐️ If you find this plugin useful, please consider giving it a star on GitHub! ⭐️
