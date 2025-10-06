@@ -8,6 +8,7 @@
  */
 
 import type { Node } from 'unist'
+import { ICON_HAST_MAP, ValidNoteType } from './icons-hast.js'
 
 /**
  * Creates a properly structured mdast node for a note callout
@@ -16,33 +17,30 @@ import type { Node } from 'unist'
  * (hName, hProperties) to tell remark-rehype how to transform them into the
  * desired HTML structure without requiring manual handlers.
  * 
- * Only the SVG icon uses raw HTML - everything else is proper mdast nodes.
+ * SVG icons are embedded as hast nodes using data.hast property for direct transformation.
  * 
  * @param noteType - The type of note (note, tip, important, etc.)
- * @param iconSvg - The SVG icon as an HTML string
  * @param children - The content nodes (markdown) to include in the note
  * @returns A mdast node that will be transformed to the note HTML structure
  */
 export function createNoteStructure(
-  noteType: string,
-  iconSvg: string,
+  noteType: ValidNoteType,
   children: Node[]
 ): any {
-  // Create icon span (SVG needs to be raw HTML)
+  // Get the hast representation of the icon
+  const iconHast = ICON_HAST_MAP[noteType]
+  
+  // Create icon span with embedded hast node
+  // Using data.hast tells remark-rehype to use this hast node directly
   const iconNode: any = {
     type: 'paragraph',
     data: {
       hName: 'span',
       hProperties: {
         className: ['remark-note-icon']
-      }
+      },
+      hChildren: [iconHast]  // Embed hast node directly
     },
-    children: [
-      {
-        type: 'html',
-        value: iconSvg
-      }
-    ]
   }
   
   // Create title span

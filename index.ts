@@ -1,9 +1,9 @@
 import { visit } from 'unist-util-visit'
 import type { Node, Parent } from 'unist'
 import type { Blockquote, Paragraph, Text } from 'mdast'
-import { NOTE_TYPES } from './lib/types/index.js'
 import { styles } from './lib/styles.js'
 import { createNoteStructure } from './lib/node-structure.js'
+import { VALID_NOTE_TYPES, ValidNoteType } from './lib/icons-hast.js'
 
 export default function remarkNotes() {
   let hasInjectedStyles = false
@@ -37,10 +37,10 @@ export default function remarkNotes() {
       const match = textNode.value.match(/^\[!(\w+)\]/)
       if (!match) return
       
-      const noteType = match[1].toLowerCase()
+      const noteType = match[1].toLowerCase() as ValidNoteType
       
       // Only transform if it's a recognized note type
-      if (!(noteType in NOTE_TYPES)) return
+      if (!VALID_NOTE_TYPES.includes(noteType)) return
       
       // Clone children to preserve original markdown structure
       const children = [...node.children]
@@ -61,12 +61,8 @@ export default function remarkNotes() {
         }
       }
       
-      // Get the icon for this note type
-      const noteConfig = NOTE_TYPES[noteType];
-      const iconSvg = noteConfig.icon;
-      
-      // Create the note structure using proper mdast nodes
-      const noteContainer = createNoteStructure(noteType, iconSvg, children);
+      // Create the note structure using proper mdast nodes (with hast-converted SVG icons)
+      const noteContainer = createNoteStructure(noteType, children);
       
       // Replace the blockquote with the container
       (parent as Parent).children[index] = noteContainer;
