@@ -2,7 +2,7 @@
 
 A powerful TypeScript remark plugin that transforms markdown blockquotes into beautifully styled note elements. Add professional-looking notes, tips, quotes, and more to your markdown documentation with minimal effort!
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/rishichawda/remark-notes-plugin/release.yml)
+![Test Status](https://img.shields.io/github/actions/workflow/status/rishichawda/remark-notes-plugin/test.yml?branch=main&label=tests)
 ![npm](https://img.shields.io/npm/v/remark-notes-plugin)
 ![License](https://img.shields.io/npm/l/remark-notes-plugin)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Frishichawda.github.io%2Fremark-notes-plugin)
