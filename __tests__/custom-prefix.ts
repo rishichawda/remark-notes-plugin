@@ -131,4 +131,4 @@ test('remark-notes: combining custom prefix with injectStyles false', async () =
     'Should not inject styles')
 })
 
-console.log('\n✅ All custom prefix tests completed!')
+console.log('All custom prefix tests completed!')

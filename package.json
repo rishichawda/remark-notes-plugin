@@ -36,7 +36,8 @@
     "test": "node --loader ts-node/esm __tests__/index.ts",
     "test:styles": "node --loader ts-node/esm __tests__/styles.ts",
     "test:custom-prefix": "node --loader ts-node/esm __tests__/custom-prefix.ts",
-    "test:all": "yarn test && yarn test:styles && yarn test:custom-prefix",
+    "test:validation": "node --loader ts-node/esm __tests__/validation.ts",
+    "test:all": "yarn test && yarn test:styles && yarn test:custom-prefix && yarn test:validation",
     "generate:fixtures": "node --loader ts-node/esm __tests__/generate-fixtures.ts"
   },
   "keywords": [

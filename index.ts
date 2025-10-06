@@ -3,7 +3,7 @@ import type { Node, Parent } from 'unist'
 import type { Blockquote, Paragraph, Text } from 'mdast'
 import { styles } from './lib/styles.js'
 import { createNoteStructure } from './lib/node-structure.js'
-import { VALID_NOTE_TYPES, ValidNoteType } from './lib/icons-hast.js'
+import { isValidNoteType } from './lib/validation.js'
 import type { RemarkNotesOptions } from './lib/types/options.js'
 
 // Export types for public API
@@ -46,10 +46,10 @@ export default function remarkNotes(options: RemarkNotesOptions = {}) {
       const match = textNode.value.match(/^\[!(\w+)\]/)
       if (!match) return
 
-      const noteType = match[1].toLowerCase() as ValidNoteType
+      const noteType = match[1].toLowerCase()
 
-      // Only transform if it's a recognized note type
-      if (!VALID_NOTE_TYPES.includes(noteType)) return
+      // Validate note type - skip transformation if invalid (graceful degradation)
+      if (!isValidNoteType(noteType)) return
 
       // Clone children to preserve original markdown structure
       const children = [...node.children]

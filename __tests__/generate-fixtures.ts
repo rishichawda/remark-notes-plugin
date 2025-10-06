@@ -37,7 +37,7 @@ async function generateFixtures() {
     console.log(`Generated fixture for ${type}`)
   }
 
-  console.log('\nAll fixtures generated successfully!')
+  console.log('All fixtures generated successfully!')
 }
 
 generateFixtures().catch(console.error)
