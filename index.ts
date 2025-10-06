@@ -19,12 +19,21 @@ export default function remarkNotes(options: RemarkNotesOptions = {}) {
 
   return (tree: Node) => {
     // Inject styles at the beginning of the document (only once) if enabled
+    // Using proper mdast node instead of HTML string for MDX compatibility
     if (injectStyles && !hasInjectedStyles) {
       const root = tree as Parent
       if (root.children) {
+        // Create a proper mdast node that will be transformed to <style> tag
         root.children.unshift({
-          type: 'html',
-          value: `<style>${styles}</style>`
+          type: 'paragraph',
+          data: {
+            hName: 'style',
+            hProperties: {}
+          },
+          children: [{
+            type: 'text',
+            value: styles
+          }]
         } as any)
         hasInjectedStyles = true
       }
