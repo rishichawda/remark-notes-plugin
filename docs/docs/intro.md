@@ -24,9 +24,12 @@ This plugin enhances your markdown content by converting standard blockquotes in
 
 - Simple integration with any remark-based markdown pipeline
 - Five distinct note types with different styling
+- Automatic style injection (configurable)
+- Custom CSS class prefixes for better control
 - Easy to use with popular frameworks like Astro, Gatsby, Next.js, and more
 - Fully customizable through CSS
 - Lightweight with minimal dependencies
+- MDX compatible
 
 ## Quick Example
 

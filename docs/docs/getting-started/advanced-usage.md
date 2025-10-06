@@ -19,6 +19,78 @@ import { MyComponent } from '../components/MyComponent';
 > <MyComponent />
 ```
 
+## Plugin Configuration
+
+`remark-notes-plugin` supports two configuration options to customize its behavior:
+
+### Class Prefix
+
+Add a custom prefix to all generated CSS class names:
+
+```javascript
+import { unified } from 'unified';
+import remarkNotes from 'remark-notes-plugin';
+
+unified().use(remarkNotes, { 
+  classPrefix: 'my-callout' 
+});
+```
+
+**Default classes** (no prefix):
+
+- `.remark-note`
+- `.remark-note-tip`
+- `.remark-note-header`
+- `.remark-note-icon`
+- etc.
+
+**With prefix** `'my-callout'`:
+
+- `.my-callout-remark-note`
+- `.my-callout-remark-note-tip`
+- `.my-callout-remark-note-header`
+- `.my-callout-remark-note-icon`
+- etc.
+
+This is useful when you need to avoid CSS conflicts or integrate with existing design systems.
+
+### Style Injection Control
+
+Control whether the plugin automatically injects CSS styles:
+
+```javascript
+// Automatic injection (default)
+unified().use(remarkNotes);
+
+// Disable auto-injection (manual import)
+unified().use(remarkNotes, { injectStyles: false });
+```
+
+When `injectStyles` is `false`, you must manually import the styles:
+
+```javascript
+import 'remark-notes-plugin/styles.css';
+```
+
+**When to disable auto-injection:**
+
+- Server-Side Rendering (SSR) with separate CSS extraction
+- Using build tools that handle CSS imports separately (Vite, Webpack, etc.)
+- Providing completely custom styles
+- Better control over style loading order and caching
+
+
+### Combined Configuration
+
+You can use both options together:
+
+```javascript
+unified().use(remarkNotes, {
+  classPrefix: 'custom',
+  injectStyles: false
+});
+```
+
 ## Integrating with Other Remark Plugins
 
 `remark-notes-plugin` can be used alongside other remark plugins. Here's how to use it with other popular plugins:
@@ -59,6 +131,9 @@ const processor = unified()
 
 const result = await processor.process(markdownContent);
 ```
+
+**Note**: The order of plugins matters. `remark-notes-plugin` should be placed before the final output transformer (like `remark-rehype` or `rehype-stringify`).
+
 
 ## Programmatic HTML Generation
 
@@ -111,7 +186,3 @@ export default function Document() {
   );
 }
 ```
-
-## Plugin Configuration
-
-In the future, `remark-notes-plugin` may support custom configuration options. Check the GitHub repository for the latest configuration options.

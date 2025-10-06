@@ -1,29 +1,14 @@
-name: Test
+name: Pull Request tests
 
 on:
   pull_request:
     branches: [main]
-    paths:
-      - 'lib/**'
-      - 'index.ts'
-      - 'styles.css'
-      - 'package.json'
-      - '__tests__/**'
-      - 'tsconfig.json'
-      - '.github/workflows/test.yml'
   push:
     branches: [main]
-    paths:
-      - 'lib/**'
-      - 'index.ts'
-      - 'styles.css'
-      - 'package.json'
-      - '__tests__/**'
-      - 'tsconfig.json'
-      - '.github/workflows/test.yml'
 
 jobs:
   test:
+    name: plugin/tests (ubuntu-latest, Node v${{ matrix.node-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -52,6 +37,7 @@ jobs:
         run: yarn build:ts
 
   lint:
+    name: plugin/lint (ubuntu-latest, Node v22)
     runs-on: ubuntu-latest
     
     steps:
@@ -72,3 +58,32 @@ jobs:
 
       - name: Check TypeScript types
         run: yarn build:ts --noEmit
+
+  docs-build:
+    name: docs/build (ubuntu-latest, Node v18)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+
+      - name: Install Root Dependencies & Build Plugin
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Install Docs Dependencies
+        run: |
+          cd docs
+          yarn install --frozen-lockfile
+
+      - name: Build Documentation Site
+        run: |
+          cd docs
+          yarn build

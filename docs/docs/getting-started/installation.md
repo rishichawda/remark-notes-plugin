@@ -25,18 +25,31 @@ This plugin is compatible with:
 
 ## Including CSS Styles
 
-The plugin comes with default styles that are included in your project by default. However, if you want to find them in your project, there are two ways to do this:
+The plugin automatically injects styles by default, so no additional setup is required. However, you can customize this behavior:
 
-### Option 1: Import CSS directly in JavaScript/TypeScript
+### Option 1: Automatic Style Injection (Default)
 
-If you're using a bundler that supports CSS imports (like webpack, Parcel, Vite, etc.), you can import the styles directly:
+By default, the plugin automatically injects styles when you use it:
 
 ```javascript
-// Import the plugin styles
-import 'remark-notes-plugin/dist/styles.css';
+import remarkNotes from 'remark-notes-plugin';
+
+// Styles are automatically included
+unified().use(remarkNotes);
 ```
 
-### Option 2: Include CSS in your HTML
+### Option 2: Manual Style Import
+
+If you prefer to control when and how styles are loaded (e.g., for SSR, custom build tools, or better caching), you can disable auto-injection:
+
+```javascript
+import remarkNotes from 'remark-notes-plugin';
+import 'remark-notes-plugin/styles.css'; // Import styles manually
+
+unified().use(remarkNotes, { injectStyles: false });
+```
+
+### Option 3: Include CSS in HTML
 
 Alternatively, you can include the CSS file directly in your HTML:
 
@@ -45,3 +58,7 @@ Alternatively, you can include the CSS file directly in your HTML:
 ```
 
 Or copy the CSS file to your public assets directory and include it from there.
+
+:::tip
+For most use cases, the default automatic injection works great. Only disable it if you have specific requirements like SSR optimization or custom style bundling.
+:::
