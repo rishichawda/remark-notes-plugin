@@ -21,15 +21,21 @@ import { ICON_HAST_MAP, ValidNoteType } from './icons-hast.js'
  * 
  * @param noteType - The type of note (note, tip, important, etc.)
  * @param children - The content nodes (markdown) to include in the note
+ * @param classPrefix - The prefix for all CSS class names (default: 'remark-note')
  * @returns A mdast node that will be transformed to the note HTML structure
  */
 export function createNoteStructure(
   noteType: ValidNoteType,
-  children: Node[]
+  children: Node[],
+  classPrefix: string = ''
 ): any {
+  // Build class names: prefix is prepended to standard 'remark-note' names
+  // Default: 'remark-note-icon', With prefix 'my': 'my-remark-note-icon'
+  const baseClass = classPrefix ? `${classPrefix}-remark-note` : 'remark-note'
+  const makeClass = (suffix: string) => classPrefix ? `${classPrefix}-remark-note-${suffix}` : `remark-note-${suffix}`
   // Get the hast representation of the icon
   const iconHast = ICON_HAST_MAP[noteType]
-  
+
   // Create icon span with embedded hast node
   // Using data.hast tells remark-rehype to use this hast node directly
   const iconNode: any = {
@@ -37,19 +43,19 @@ export function createNoteStructure(
     data: {
       hName: 'span',
       hProperties: {
-        className: ['remark-note-icon']
+        className: [makeClass('icon')]
       },
       hChildren: [iconHast]  // Embed hast node directly
     },
   }
-  
+
   // Create title span
   const titleNode: any = {
     type: 'paragraph',
     data: {
       hName: 'span',
       hProperties: {
-        className: ['remark-note-title']
+        className: [makeClass('title')]
       }
     },
     children: [
@@ -59,31 +65,31 @@ export function createNoteStructure(
       }
     ]
   }
-  
+
   // Create header div
   const headerNode: any = {
     type: 'paragraph',
     data: {
       hName: 'div',
       hProperties: {
-        className: ['remark-note-header']
+        className: [makeClass('header')]
       }
     },
     children: [iconNode, titleNode]
   }
-  
+
   // Create content wrapper div
   const contentNode: any = {
     type: 'paragraph',
     data: {
       hName: 'div',
       hProperties: {
-        className: ['remark-note-content']
+        className: [makeClass('content')]
       }
     },
     children: children
   }
-  
+
   // Build the structure: wrap everything in a blockquote container with data hints
   // Using blockquote for semantic HTML since the source is a blockquote
   const noteContainer: any = {
@@ -91,11 +97,11 @@ export function createNoteStructure(
     data: {
       hName: 'blockquote',  // Transform to blockquote for semantic HTML
       hProperties: {
-        className: ['remark-note', noteType]
+        className: [baseClass, makeClass(noteType)]
       }
     },
     children: [headerNode, contentNode]
   }
-  
+
   return noteContainer
 }

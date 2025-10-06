@@ -1,12 +1,12 @@
 /* Base note container */
-.remark-note {
+blockquote[class*="remark-note"] {
   /* Reset blockquote defaults */
   margin: 1.5rem 0;
   padding: 1.25rem;
   quotes: none;
   font-weight: normal;
   font-style: normal;
-  
+
   /* Custom note styles */
   border-radius: 0.5rem;
   border: 1px solid;
@@ -15,7 +15,7 @@
 }
 
 /* Header styles */
-.remark-note-header {
+[class*="remark-note-header"] {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -23,7 +23,7 @@
 }
 
 /* Icon styles */
-.remark-note-icon {
+[class*="remark-note-icon"] {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,14 +33,14 @@
   border-radius: 0.5rem;
 }
 
-.remark-note-icon > svg {
+[class*="remark-note-icon"]>svg {
   width: auto;
   height: 100%;
   fill: none;
 }
 
 /* Title styles */
-.remark-note-title {
+[class*="remark-note-title"] {
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.025em;
@@ -49,7 +49,7 @@
 }
 
 /* Content styles */
-.remark-note-content {
+[class*="remark-note-content"] {
   color: #1F2937;
   line-height: 1.625;
   font-size: 1rem;
@@ -57,76 +57,76 @@
 }
 
 /* Note type: Note (Light Blue) */
-.remark-note.note {
+blockquote[class*="remark-note-note"] {
   background-color: #318CE710;
   border-color: #318CE7;
   box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
 }
 
-.remark-note.note .remark-note-icon {
+blockquote[class*="remark-note-note"] [class*="remark-note-icon"] {
   stroke: #318CE7;
 }
 
-.remark-note.note .remark-note-title {
+blockquote[class*="remark-note-note"] [class*="remark-note-title"] {
   color: #318CE7;
 }
 
 /* Note type: Important (Purple) */
-.remark-note.important {
+blockquote[class*="remark-note-important"] {
   background-color: #EF9B0F10;
   border-color: #EF9B0F;
   box-shadow: 0 4px 6px -1px rgba(147, 51, 234, 0.1), 0 2px 4px -2px rgba(147, 51, 234, 0.1);
 }
 
-.remark-note.important .remark-note-icon {
+blockquote[class*="remark-note-important"] [class*="remark-note-icon"] {
   color: #EF9B0F;
 }
 
-.remark-note.important .remark-note-title {
+blockquote[class*="remark-note-important"] [class*="remark-note-title"] {
   color: #EF9B0F;
 }
 
 /* Note type: Quote (Gray) */
-.remark-note.quote {
+blockquote[class*="remark-note-quote"] {
   background-color: #8C92AC10;
   border-color: #8C92AC;
   box-shadow: 0 4px 6px -1px rgba(75, 85, 99, 0.1), 0 2px 4px -2px rgba(75, 85, 99, 0.1);
 }
 
-.remark-note.quote .remark-note-icon {
+blockquote[class*="remark-note-quote"] [class*="remark-note-icon"] {
   stroke: #8C92AC;
 }
 
-.remark-note.quote .remark-note-title {
+blockquote[class*="remark-note-quote"] [class*="remark-note-title"] {
   color: #8C92AC;
 }
 
 /* Note type: Bonus (Pink) */
-.remark-note.bonus {
+blockquote[class*="remark-note-bonus"] {
   background-color: #9966CC10;
   border-color: #9966CC;
   box-shadow: 0 4px 6px -1px rgba(219, 39, 119, 0.1), 0 2px 4px -2px rgba(219, 39, 119, 0.1);
 }
 
-.remark-note.bonus .remark-note-icon {
+blockquote[class*="remark-note-bonus"] [class*="remark-note-icon"] {
   stroke: #9966CC;
 }
 
-.remark-note.bonus .remark-note-title {
+blockquote[class*="remark-note-bonus"] [class*="remark-note-title"] {
   color: #9966CC;
 }
 
 /* Note type: Tip (Light Blue - same as Note) */
-.remark-note.tip {
+blockquote[class*="remark-note-tip"] {
   background-color: #7ccf0010;
   border-color: #7ccf00;
   box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
 }
 
-.remark-note.tip .remark-note-icon > svg {
+blockquote[class*="remark-note-tip"] [class*="remark-note-icon"]>svg {
   stroke: #7ccf00;
 }
 
-.remark-note.tip .remark-note-title {
+blockquote[class*="remark-note-tip"] [class*="remark-note-title"] {
   color: #7ccf00;
 }
