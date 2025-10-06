@@ -14,6 +14,13 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
   "files": [
     "dist/",
     "LICENSE",
@@ -26,7 +33,10 @@
     "watch:css": "postcss styles.css -o dist/styles.css --watch",
     "build": "yarn build:ts && yarn build:css",
     "watch": "yarn watch:ts & yarn watch:css",
-    "test": "node --loader ts-node/esm test.ts"
+    "test": "node --loader ts-node/esm __tests__/index.ts",
+    "test:styles": "node --loader ts-node/esm __tests__/styles.ts",
+    "test:all": "yarn test && yarn test:styles",
+    "generate:fixtures": "node --loader ts-node/esm __tests__/generate-fixtures.ts"
   },
   "keywords": [
     "remark",
@@ -49,6 +59,10 @@
     "cssnano": "^7.0.6",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
+    "rehype-parse": "^9.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
