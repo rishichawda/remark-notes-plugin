@@ -4,100 +4,413 @@ sidebar_position: 1
 
 # Note Types
 
-`remark-notes-plugin` supports five different types of notes, each with its own styling. This page demonstrates all available note types and how to use them.
+Learn about all five note types, when to use them, and best practices for creating effective documentation.
 
-## Standard Note
+## Overview
 
-Used for providing general information or notes to the reader.
+`remark-notes-plugin` provides five distinct note types, each designed for a specific purpose. Using the right type helps readers quickly understand the importance and context of your message.
 
+| Type | Purpose | When to Use | Color |
+|------|---------|-------------|-------|
+| **Note** | General information | Definitions, context, explanations | Blue |
+| **Tip** | Helpful advice | Best practices, shortcuts, recommendations | Green |
+| **Important** | Critical information | Warnings, requirements, prerequisites | Orange |
+| **Quote** | Quotations | Testimonials, citations, highlights | Gray |
+| **Bonus** | Extra value | Advanced features, optional enhancements | Purple |
+
+---
+
+## 📘 Note - General Information
+
+### Purpose
+
+Use notes for general information, definitions, background context, or explanations that help readers understand the content better.
+
+### When to Use
+
+- Providing additional context
+- Explaining terminology
+- Offering related information
+- Clarifying concepts
+- Adding supplementary details
+
+### Example
+
+> [!note]
+> This plugin uses the unified/remark ecosystem for markdown processing. If you're new to remark, check out the [official documentation](https://github.com/remarkjs/remark) to learn more about how it works.
+
+### Best Practices
+
+✅ **Do:**
+- Keep notes informative but concise
+- Use for non-critical supplementary information
+- Provide helpful context without interrupting flow
+- Link to additional resources when relevant
+
+❌ **Don't:**
+- Use for urgent warnings (use Important instead)
+- Overuse - too many notes reduce impact
+- Include critical setup steps (use Important)
+
+### Markdown Syntax
+
+```markdown
 > [!note]
 > This is a standard note that provides additional information to the reader.
-
-**Markdown Syntax**:
-```markdown
-> [!note]
-> This is a standard note that provides additional information to the reader.
 ```
 
-## Tip Note
+### Accessibility Note
 
-Used for providing helpful tips and advice.
+Notes use semantic `<blockquote>` elements and include proper ARIA labels for screen readers.
+
+---
+
+## 💡 Tip - Helpful Advice
+
+### Purpose
+
+Use tips to share best practices, expert advice, helpful shortcuts, or recommendations that improve the reader's experience or results.
+
+### When to Use
+
+- Sharing best practices
+- Offering optimization suggestions
+- Providing pro tips or shortcuts
+- Recommending better approaches
+- Highlighting efficiency improvements
+
+### Example
 
 > [!tip]
-> Here's a helpful tip that can improve your workflow or code quality.
+> For better performance in production, disable style injection and import the CSS file directly in your layout. This enables better caching and reduces runtime overhead.
 
-**Markdown Syntax**:
+### Best Practices
+
+✅ **Do:**
+- Share actionable, practical advice
+- Focus on improvements and optimizations
+- Keep tips specific and valuable
+- Explain why the tip is helpful
+
+❌ **Don't:**
+- State obvious information
+- Use for warnings (use Important)
+- Make tips too generic
+- Forget to explain the benefit
+
+### Markdown Syntax
+
 ```markdown
 > [!tip]
 > Here's a helpful tip that can improve your workflow or code quality.
 ```
 
-## Important Note
+### Real-World Examples
 
-Used for highlighting critical information that requires special attention.
-
-> [!important]
-> This information is crucial and requires your attention to avoid issues or errors.
-
-**Markdown Syntax**:
-```markdown
-> [!important]
-> This information is crucial and requires your attention to avoid issues or errors.
-```
-
-## Quote Note
-
-Used for styling quotations in a distinctive way.
-
-> [!quote]
-> "The best way to predict the future is to invent it." — Alan Kay
-
-**Markdown Syntax**:
-```markdown
-> [!quote]
-> "The best way to predict the future is to invent it." — Alan Kay
-```
-
-## Bonus Note
-
-Used for providing additional, nice-to-have information or features.
-
-> [!bonus]
-> Here's an advanced technique that can further enhance your implementation.
-
-**Markdown Syntax**:
-```markdown
-> [!bonus]
-> Here's an advanced technique that can further enhance your implementation.
-```
-
-## Multiple Paragraphs
-
-Notes can contain multiple paragraphs and other markdown elements like lists and code blocks.
-
-> [!note]
-> This note has multiple paragraphs.
->
-> You can include:
-> - Lists
-> - And other markdown elements
->
-> ```js
-> // Even code blocks
-> console.log('Hello world');
+> [!tip]
+> When using with Next.js App Router, import the CSS in your root layout for optimal performance:
+> ```typescript
+> // app/layout.tsx
+> import 'remark-notes-plugin/styles.css';
 > ```
 
-**Markdown Syntax**:
+---
+
+## ⚠️ Important - Critical Information
+
+### Purpose
+
+Use important notes for critical information that readers must not miss - warnings, requirements, prerequisites, breaking changes, or potential issues.
+
+### When to Use
+
+- Highlighting breaking changes
+- Warning about potential issues
+- Stating requirements or prerequisites
+- Emphasizing critical setup steps
+- Preventing common mistakes
+- Security considerations
+
+### Example
+
+> [!important]
+> This plugin requires Node.js 14 or higher and remark v13+. Using older versions will result in compatibility issues.
+
+### Best Practices
+
+✅ **Do:**
+- Be clear and specific about the issue
+- Explain the consequences
+- Provide solutions when possible
+- Use sparingly to maintain impact
+- Front-load critical information
+
+❌ **Don't:**
+- Overuse - reduces effectiveness
+- Use for general tips
+- Be vague or unclear
+- Forget to explain why it's important
+
+### Markdown Syntax
+
 ```markdown
-> [!note]
-> This note has multiple paragraphs.
+> [!important]
+> This information is crucial and requires your attention to avoid issues or errors.
+```
+
+### Real-World Examples
+
+> [!important]
+> When using with SSR frameworks like Next.js, set `injectStyles: false` to prevent hydration mismatches. Import the CSS in your layout instead.
+
+> [!important]
+> Invalid note types (like `[!warning]`) will silently fail and render as plain blockquotes. Only use supported types: note, tip, important, quote, bonus.
+
+---
+
+## 💬 Quote - Quotations & Highlights
+
+### Purpose
+
+Use quote notes for testimonials, citations, memorable quotes, or to highlight specific text in a visually distinct way.
+
+### When to Use
+
+- Displaying user testimonials
+- Citing sources or authorities
+- Highlighting memorable quotes
+- Showcasing feedback
+- Emphasizing key statements
+
+### Example
+
+> [!quote]
+> "This plugin transformed our documentation from plain and boring to engaging and professional. The GitHub-compatible syntax made migration effortless!"  
+> — DevOps Team Lead, Tech Startup
+
+### Best Practices
+
+✅ **Do:**
+- Include attribution when appropriate
+- Use for actual quotes or testimonials
+- Keep quotes relevant to context
+- Consider length - shorter is better
+- Use proper quotation marks
+
+❌ **Don't:**
+- Fabricate quotes
+- Use for general information (use Note)
+- Omit attribution for famous quotes
+- Make quotes too long
+
+### Markdown Syntax
+
+```markdown
+> [!quote]
+> "The best way to predict the future is to invent it." — Alan Kay
+```
+
+### Real-World Examples
+
+> [!quote]
+> "Markdown is intended to be as easy-to-read and easy-to-write as is feasible."  
+> — John Gruber, Creator of Markdown
+
+---
+
+## ⭐ Bonus - Advanced Features
+
+### Purpose
+
+Use bonus notes for advanced techniques, optional features, power-user tips, or extra value content that goes beyond the basics.
+
+### When to Use
+
+- Sharing advanced techniques
+- Describing optional features
+- Providing expert-level tips
+- Offering additional value
+- Going beyond basic usage
+- Showcasing hidden features
+
+### Example
+
+> [!bonus]
+> Advanced users can create custom note styles by disabling default injection and creating their own CSS classes that match your design system. See the [CSS Customization guide](/docs/customization/styling) for details.
+
+### Best Practices
+
+✅ **Do:**
+- Provide genuine additional value
+- Target intermediate/advanced users
+- Link to detailed documentation
+- Make it optional and supplementary
+- Explain the benefits
+
+❌ **Don't:**
+- Include essential information (use Note/Important)
+- Make it too complex without explanation
+- Use for basic tips (use Tip)
+- Forget to link to detailed guides
+
+### Markdown Syntax
+
+```markdown
+> [!bonus]
+> Here's an advanced technique that can further enhance your implementation.
+```
+
+### Real-World Examples
+
+> [!bonus]
+> You can use custom class prefixes to run multiple instances of the plugin with different styles on the same page:
+> ```javascript
+> .use(remarkNotes, { classPrefix: 'sidebar' })
+> .use(remarkNotes, { classPrefix: 'main' })
+> ```
+
+---
+
+## Advanced Usage
+
+### Multiple Paragraphs
+
+All note types support multiple paragraphs, lists, code blocks, and other markdown elements:
+
+> [!tip]
+> When structuring complex notes, follow these guidelines:
 >
-> You can include:
-> - Lists
-> - And other markdown elements
+> 1. Start with the key message
+> 2. Provide supporting details
+> 3. Include examples when helpful
+>
+> ```javascript
+> // Example code
+> unified()
+>   .use(remarkNotes)
+>   .process(content);
+> ```
+>
+> This keeps your notes organized and scannable.
+
+**Syntax:**
+```markdown
+> [!tip]
+> First paragraph.
+>
+> Second paragraph with a list:
+> - Item 1
+> - Item 2
 >
 > ```js
-> // Even code blocks
-> console.log('Hello world');
+> // Code block
 > ```
 ```
+
+### Nested Elements
+
+You can include various markdown elements:
+
+> [!note]
+> **Supported markdown elements:**
+>
+> - **Bold** and *italic* text
+> - [Links](https://example.com)
+> - `inline code`
+> - Lists (ordered and unordered)
+> - Code blocks
+> - Images (use sparingly)
+> 
+> Complex formatting works seamlessly!
+
+### Combining Note Types
+
+Use different types strategically in your documentation:
+
+> [!note]
+> The `classPrefix` option prepends a custom string to all CSS classes.
+
+> [!tip]
+> Use a prefix that matches your project's naming convention, like `docs-` or `blog-`.
+
+> [!important]
+> The default CSS uses attribute selectors, so it works with any prefix automatically.
+
+> [!bonus]
+> Advanced CSS users can target specific prefixes for granular control over different sections.
+
+---
+
+## Choosing the Right Type
+
+### Decision Tree
+
+```
+Is it critical information that could cause errors?
+├─ YES → Use [!important]
+└─ NO ↓
+
+Is it practical advice or a best practice?
+├─ YES → Use [!tip]
+└─ NO ↓
+
+Is it a quotation or testimonial?
+├─ YES → Use [!quote]
+└─ NO ↓
+
+Is it advanced/optional information?
+├─ YES → Use [!bonus]
+└─ NO → Use [!note]
+```
+
+### Common Mistakes
+
+**❌ Wrong:**
+```markdown
+> [!note]
+> WARNING: This will delete all your data!
+```
+
+**✅ Right:**
+```markdown
+> [!important]
+> This operation permanently deletes all data. Create a backup before proceeding.
+```
+
+---
+
+**❌ Wrong:**
+```markdown
+> [!important]
+> You might want to use TypeScript for better development experience.
+```
+
+**✅ Right:**
+```markdown
+> [!tip]
+> Use TypeScript for better development experience with autocomplete and type safety.
+```
+
+---
+
+## Accessibility Considerations
+
+All note types are designed with accessibility in mind:
+
+- **Semantic HTML:** Uses `<blockquote>` elements
+- **Color Independence:** Information isn't conveyed by color alone
+- **Screen Readers:** Proper heading hierarchy and ARIA labels
+- **Keyboard Navigation:** Fully keyboard accessible
+- **Contrast Ratios:** WCAG AA compliant color combinations
+
+> [!note]
+> The icons are decorative (aria-hidden) and the note type is provided as text, ensuring screen reader users get the same information as sighted users.
+
+---
+
+## Next Steps
+
+- [CSS Customization](/docs/customization/styling) - Customize note appearance
+- [Framework Integration](/docs/guides/frameworks) - Use with your favorite framework
+- [API Reference](/docs/api/overview) - Complete technical documentation
+- [Troubleshooting](/docs/guides/troubleshooting) - Common issues and solutions

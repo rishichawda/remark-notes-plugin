@@ -7,7 +7,7 @@ import remarkNotes from 'remark-notes-plugin';
 
 const config: Config = {
   title: 'Remark Notes Plugin',
-  tagline: 'Transform markdown quotes into beautiful note elements',
+  tagline: 'Transform markdown blockquotes into beautiful, professional note components',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -44,11 +44,22 @@ const config: Config = {
             'https://github.com/rishichawda/remark-notes-plugin/tree/main/docs',
           // Add remark plugin to process notes
           remarkPlugins: [remarkNotes],
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         blog: false, // We don't need a blog for this project
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
+        // Google Analytics (optional - uncomment and add your tracking ID)
+        // gtag: {
+        //   trackingID: 'G-XXXXXXXXXX',
+        //   anonymizeIP: true,
+        // },
       } satisfies Preset.Options,
     ],
   ],
@@ -56,6 +67,23 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/remark-notes-social-card.jpg',
+    
+    // Announcement bar
+    announcementBar: {
+      id: 'support_us',
+      content: '⭐ If you like remark-notes-plugin, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/rishichawda/remark-notes-plugin">GitHub</a>!',
+      backgroundColor: '#667eea',
+      textColor: '#ffffff',
+      isCloseable: true,
+    },
+    
+    metadata: [
+      {name: 'keywords', content: 'remark, markdown, notes, callouts, documentation, plugin, mdx, astro, next.js'},
+      {name: 'description', content: 'A powerful remark plugin that transforms markdown blockquotes into beautiful, professional note components. Perfect for documentation, blogs, and technical writing.'},
+      {name: 'author', content: 'rishichawda'},
+      {name: 'og:type', content: 'website'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+    ],
     navbar: {
       title: 'Remark Notes Plugin',
       logo: {
@@ -70,34 +98,92 @@ const config: Config = {
           label: 'Documentation',
         },
         {
+          type: 'dropdown',
+          label: 'Quick Links',
+          position: 'left',
+          items: [
+            {
+              label: 'Getting Started',
+              to: '/docs/getting-started/installation',
+            },
+            {
+              label: 'API Reference',
+              to: '/docs/api/overview',
+            },
+            {
+              label: 'Framework Integration',
+              to: '/docs/guides/frameworks',
+            },
+            {
+              label: 'Customization',
+              to: '/docs/customization/styling',
+            },
+          ],
+        },
+        {
+          href: 'https://www.npmjs.com/package/remark-notes-plugin',
+          label: 'npm',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/rishichawda/remark-notes-plugin',
           label: 'GitHub',
           position: 'right',
         },
       ],
+      hideOnScroll: true,
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
-              label: 'Getting Started',
+              label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'Getting Started',
+              to: '/docs/getting-started/installation',
+            },
+            {
+              label: 'API Reference',
+              to: '/docs/api/overview',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Resources',
+          items: [
+            {
+              label: 'Framework Integration',
+              to: '/docs/guides/frameworks',
+            },
+            {
+              label: 'Customization',
+              to: '/docs/customization/styling',
+            },
+            {
+              label: 'Troubleshooting',
+              to: '/docs/guides/troubleshooting',
+            },
+          ],
+        },
+        {
+          title: 'Community',
           items: [
             {
               label: 'GitHub',
               href: 'https://github.com/rishichawda/remark-notes-plugin',
             },
             {
-              label: 'npm',
+              label: 'npm Package',
               href: 'https://www.npmjs.com/package/remark-notes-plugin',
+            },
+            {
+              label: 'Issues',
+              href: 'https://github.com/rishichawda/remark-notes-plugin/issues',
             },
           ],
         },
@@ -107,8 +193,30 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'diff', 'json', 'markdown'],
+      additionalLanguages: ['bash', 'diff', 'json', 'markdown', 'typescript', 'jsx', 'tsx'],
     },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 4,
+    },
+    
+    // Algolia search (optional - configure when ready)
+    // algolia: {
+    //   appId: 'YOUR_APP_ID',
+    //   apiKey: 'YOUR_SEARCH_API_KEY',
+    //   indexName: 'remark-notes-plugin',
+    // },
   } satisfies Preset.ThemeConfig,
 };
 

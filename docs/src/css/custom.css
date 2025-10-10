@@ -9,94 +9,293 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #667eea;
+  --ifm-color-primary-dark: #4c5fd6;
+  --ifm-color-primary-darker: #4353cf;
+  --ifm-color-primary-darkest: #3543a9;
+  --ifm-color-primary-light: #808dfa;
+  --ifm-color-primary-lighter: #949fff;
+  --ifm-color-primary-lightest: #b8c2ff;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ifm-heading-font-weight: 700;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
-  /* Note type colors */
-  --note-color: #4285f4;
-  --tip-color: #0f9d58;
-  --important-color: #db4437;
-  --quote-color: #9c27b0;
-  --bonus-color: #ff9800;
+  
+  /* Custom color palette */
+  --color-note: #318CE7;
+  --color-tip: #7ccf00;
+  --color-important: #EF9B0F;
+  --color-quote: #8C92AC;
+  --color-bonus: #9966CC;
+  
+  /* Spacing */
+  --ifm-leading: 1.6;
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1.5rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  /* Note type colors - slightly brighter for dark mode */
-  --note-color: #669df6;
-  --tip-color: #34a853;
-  --important-color: #ea4335;
-  --quote-color: #b455c9;
-  --bonus-color: #ffa726;
+  --ifm-color-primary: #818cf8;
+  --ifm-color-primary-dark: #6571f6;
+  --ifm-color-primary-darker: #5663f5;
+  --ifm-color-primary-darkest: #2f40f0;
+  --ifm-color-primary-light: #9da7fa;
+  --ifm-color-primary-lighter: #acb5fb;
+  --ifm-color-primary-lightest: #d8dcfd;
+  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.1);
+  --ifm-background-color: #1a202c;
+  --ifm-background-surface-color: #2d3748;
+  
+  /* Dark mode note colors - slightly brighter */
+  --color-note: #60a5fa;
+  --color-tip: #86e62b;
+  --color-important: #fbbf24;
+  --color-quote: #a5b4c9;
+  --color-bonus: #a78bfa;
 }
 
-/* Styles for remark-notes-plugin notes */
-/* .remark-note {
+/* Enhanced typography */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--ifm-heading-font-weight);
+  letter-spacing: -0.01em;
+}
+
+/* Code blocks improvements */
+code {
+  background-color: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.9em;
+}
+
+[data-theme='dark'] code {
+  background-color: rgba(129, 140, 248, 0.15);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Improved code block styling */
+.theme-code-block {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 1.5rem 0;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border-left: 0.25rem solid var(--note-color);
-  background-color: var(--ifm-color-emphasis-100);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-} */
+}
 
-/* .remark-note-title {
+/* Navbar enhancements */
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(26, 32, 44, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Sidebar improvements */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+
+.menu__link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: rgba(102, 126, 234, 0.1);
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background-color: rgba(129, 140, 248, 0.15);
+}
+
+.menu__link--active {
+  background-color: rgba(102, 126, 234, 0.15);
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--note-color);
-} */
-
-/* Styles for different note types */
-/* .remark-note {
-  border-left-color: var(--note-color);
 }
 
-.remark-note-tip {
-  border-left-color: var(--tip-color);
+[data-theme='dark'] .menu__link--active {
+  background-color: rgba(129, 140, 248, 0.2);
 }
 
-.remark-note-tip .remark-note-title {
-  color: var(--tip-color);
+/* Footer improvements */
+.footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-.remark-note-important {
-  border-left-color: var(--important-color);
+[data-theme='dark'] .footer {
+  background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
 }
 
-.remark-note-important .remark-note-title {
-  color: var(--important-color);
+.footer__title {
+  color: white;
+  font-weight: 700;
 }
 
-.remark-note-quote {
-  border-left-color: var(--quote-color);
+.footer__link-item {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.2s ease;
 }
 
-.remark-note-quote .remark-note-title {
-  color: var(--quote-color);
+.footer__link-item:hover {
+  color: white;
+  text-decoration: underline;
 }
 
-.remark-note-bonus {
-  border-left-color: var(--bonus-color);
+.footer__copyright {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.remark-note-bonus .remark-note-title {
-  color: var(--bonus-color);
-} */
+/* Table of Contents improvements */
+.table-of-contents {
+  font-size: 0.9rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-color-emphasis-700);
+  transition: all 0.2s ease;
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Pagination improvements */
+.pagination-nav__link {
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  transition: all 0.3s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Admonition enhancements (keep for other admonitions) */
+.admonition {
+  border-radius: 8px;
+  border-left-width: 4px;
+  margin: 1.5rem 0;
+}
+
+/* Improved link styles */
+.markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+.markdown a:hover {
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+/* Smooth animations */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+*:where(:not(:active):not(:focus)) {
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+/* Better spacing for content */
+.markdown > * {
+  margin-bottom: 1.5rem;
+}
+
+.markdown h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Improved blockquote (for non-note blockquotes) */
+.markdown blockquote:not([class*="remark-note"]) {
+  border-left: 4px solid var(--ifm-color-primary);
+  padding-left: 1rem;
+  color: var(--ifm-color-emphasis-700);
+  font-style: italic;
+}
+
+/* Enhanced buttons */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Search improvements */
+.navbar__search-input {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.navbar__search-input:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive improvements */
+@media (max-width: 996px) {
+  :root {
+    --ifm-spacing-horizontal: 1rem;
+    --ifm-spacing-vertical: 1rem;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 
 /* Dark mode styles */
 [data-theme='dark'] .remark-note {

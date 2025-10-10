@@ -14,10 +14,14 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  */
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
-    'intro',
+    {
+      type: 'doc',
+      id: 'intro',
+      label: '👋 Introduction',
+    },
     {
       type: 'category',
-      label: 'Getting Started',
+      label: '🚀 Getting Started',
       collapsed: false,
       items: [
         'getting-started/installation',
@@ -27,11 +31,36 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Examples',
+      label: '📚 Guides',
+      collapsed: false,
+      items: [
+        'guides/frameworks',
+        'guides/troubleshooting',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🎨 Customization',
+      collapsed: false,
+      items: [
+        'customization/styling',
+      ],
+    },
+    {
+      type: 'category',
+      label: '💡 Examples',
       collapsed: false,
       items: [
         'examples/note-types',
         'examples/customization',
+      ],
+    },
+    {
+      type: 'category',
+      label: '📖 API Reference',
+      collapsed: false,
+      items: [
+        'api/overview',
       ],
     },
   ],
