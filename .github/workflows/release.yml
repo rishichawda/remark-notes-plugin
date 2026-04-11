@@ -4,26 +4,27 @@ on:
   release:
     types: [published]
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org/'
-          always-auth: true
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: yarn
 
       - name: Build package
-        run: yarn build  # Remove or adjust if your package doesn't need building
+        run: yarn build
 
       - name: Publish package
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
