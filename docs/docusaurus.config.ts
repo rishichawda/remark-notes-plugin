@@ -98,29 +98,6 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          type: 'dropdown',
-          label: 'Quick Links',
-          position: 'left',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/getting-started/installation',
-            },
-            {
-              label: 'API Reference',
-              to: '/docs/api/overview',
-            },
-            {
-              label: 'Framework Integration',
-              to: '/docs/guides/frameworks',
-            },
-            {
-              label: 'Customization',
-              to: '/docs/customization/styling',
-            },
-          ],
-        },
-        {
           href: 'https://www.npmjs.com/package/remark-notes-plugin',
           label: 'npm',
           position: 'right',
@@ -144,12 +121,12 @@ const config: Config = {
               to: '/docs/intro',
             },
             {
-              label: 'Getting Started',
-              to: '/docs/getting-started/installation',
+              label: 'Framework Integration',
+              to: '/docs/frameworks',
             },
             {
               label: 'API Reference',
-              to: '/docs/api/overview',
+              to: '/docs/api-reference',
             },
           ],
         },
@@ -157,16 +134,12 @@ const config: Config = {
           title: 'Resources',
           items: [
             {
-              label: 'Framework Integration',
-              to: '/docs/guides/frameworks',
-            },
-            {
               label: 'Customization',
-              to: '/docs/customization/styling',
+              to: '/docs/customization',
             },
             {
               label: 'Troubleshooting',
-              to: '/docs/guides/troubleshooting',
+              to: '/docs/troubleshooting',
             },
           ],
         },
