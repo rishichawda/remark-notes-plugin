@@ -68,9 +68,42 @@
   color: var(--ifm-font-color-base);
 }
 
-/* Demo */
-.demo {
+/* Playground */
+.playground {
   padding: 1rem 0 4rem;
+}
+
+.playgroundIntro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1100px;
+  margin: 0 auto 0.75rem;
+}
+
+.insertButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.insertButton {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.78rem;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.insertButton:hover {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-1px);
 }
 
 .demoGrid {
@@ -92,25 +125,38 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ifm-color-emphasis-600);
-  margin-bottom: 0.75rem;
+  margin: 0;
 }
 
-.demoCode {
+.demoTextarea {
+  width: 100%;
+  min-height: 260px;
   background: var(--ifm-color-emphasis-100);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   padding: 1.25rem;
-  overflow-x: auto;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
   font-size: 0.85rem;
   line-height: 1.6;
-  margin: 0;
+  color: var(--ifm-font-color-base);
+  resize: vertical;
+}
+
+.demoTextarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
 }
 
 .demoNotes {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.emptyState {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
 }
 
 /* Responsive */

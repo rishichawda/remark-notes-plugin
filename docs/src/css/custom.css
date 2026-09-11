@@ -264,15 +264,14 @@ pre code {
 [data-theme='light'] blockquote[class*="remark-note-quote"] { --rn-accent: #8C92AC; }
 [data-theme='light'] blockquote[class*="remark-note-bonus"] { --rn-accent: #9966CC; }
 
-/* Demo section styles */
-.demo-section {
-  margin: 2rem 0;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--ifm-color-emphasis-100);
-  border: 1px solid var(--ifm-color-emphasis-200);
+/* This site's own signature: notes tilt slightly on hover, like a real
+   note pinned to the page. The plugin's shipped default stylesheet stays
+   calm and unopinionated for anyone building on it — this flourish lives
+   here, in this site's own presentation layer, not in what we hand out. */
+blockquote[class*="remark-note"] {
+  transition: transform 0.15s ease, background-color 0.18s ease;
 }
 
-.demo-section h3 {
-  margin-top: 0;
+blockquote[class*="remark-note"]:hover {
+  transform: rotate(-0.5deg) translateY(-1px);
 }
