@@ -7,8 +7,15 @@ import remarkNotes from 'remark-notes-plugin';
 
 const config: Config = {
   title: 'Remark Notes Plugin',
-  tagline: 'Transform markdown blockquotes into beautiful, professional note components',
+  tagline: 'Blockquotes with something to say.',
   favicon: 'img/favicon.ico',
+
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Caveat:wght@500;700&display=swap',
+      type: 'text/css',
+    },
+  ],
 
   // Set the production url of your site here
   url: 'https://rishichawda.github.io',

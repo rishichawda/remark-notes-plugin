@@ -99,12 +99,15 @@ function Playground() {
       <div className="container">
         <div className={styles.playgroundIntro}>
           <p className={styles.demoLabel}>Try it</p>
-          <div className={styles.insertButtons}>
-            {VALID_TYPES.map((type) => (
-              <button key={type} className={styles.insertButton} onClick={() => insert(type)} type="button">
-                + {type}
-              </button>
-            ))}
+          <div className={styles.insertButtonsWrap}>
+            <span className={`${styles.tryMeLabel} handwritten`}>poke it →</span>
+            <div className={styles.insertButtons}>
+              {VALID_TYPES.map((type) => (
+                <button key={type} className={styles.insertButton} onClick={() => insert(type)} type="button">
+                  + {type}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         <div className={styles.demoGrid}>
@@ -141,7 +144,13 @@ function HomepageHeader() {
     <header className={styles.hero}>
       <div className="container">
         <Heading as="h1" className={styles.heroTitle}>
-          Blockquotes with <span className={styles.heroTitleAccent}>something to say.</span>
+          Blockquotes with{' '}
+          <span className={styles.heroTitleAccent}>
+            something to say.
+            <svg className={styles.squiggle} viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 12C40 4 70 18 110 10C150 2 180 16 220 8C250 2 270 14 298 6" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
+            </svg>
+          </span>
         </Heading>
         <p className={styles.heroTagline}>
           Five styled note types for your markdown. Write <code>{'[!tip]'}</code>, get a tip. No config, no fuss.
