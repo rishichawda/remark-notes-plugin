@@ -162,42 +162,74 @@ pre code {
   margin: 1.5rem 0;
 }
 
-/* Navbar */
+/* Navbar: a torn strip of paper laid across the top of the desk, not a
+   plain corporate bar. */
 .navbar {
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: none;
   box-shadow: none;
+  background-image:
+    linear-gradient(var(--ifm-navbar-background-color), var(--ifm-navbar-background-color)),
+    repeating-linear-gradient(135deg, var(--ifm-color-primary) 0 7px, transparent 7px 14px);
+  background-position: top, bottom;
+  background-size: 100% calc(100% - 3px), 100% 3px;
+  background-repeat: no-repeat;
+  opacity: 0.97;
 }
 
 .navbar__title {
+  font-family: var(--ifm-heading-font-family);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
-/* Sidebar improvements */
+/* Sidebar: reads as a small stack of tabbed index cards instead of a
+   generic vertical link list — same card/tilt language as the notes and
+   feature cards, so this is one designed system, not "content" plus "UI
+   chrome that happens to share a color." */
 .theme-doc-sidebar-container {
-  border-right: 1px solid var(--ifm-toc-border-color);
+  border-right: none;
+  background: transparent;
+  padding-top: 0.5rem;
+}
+
+.menu__list-item {
+  margin-bottom: 0.55rem;
 }
 
 .menu__link {
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  box-shadow: 2px 3px 0 rgba(42, 35, 28, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
+
+[data-theme='dark'] .menu__link {
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.menu__list-item:nth-child(odd) .menu__link { transform: rotate(-0.7deg); }
+.menu__list-item:nth-child(even) .menu__link { transform: rotate(0.6deg); }
 
 .menu__link:hover {
-  background-color: rgba(194, 84, 44, 0.1);
-}
-
-[data-theme='dark'] .menu__link:hover {
-  background-color: rgba(224, 130, 79, 0.15);
+  transform: rotate(0deg) translateX(3px);
+  border-left-color: var(--ifm-color-primary);
+  background-color: var(--ifm-background-surface-color);
 }
 
 .menu__link--active {
-  background-color: rgba(194, 84, 44, 0.15);
-  font-weight: 600;
+  background: var(--ifm-background-surface-color);
+  border-left-color: var(--ifm-color-primary);
+  border-color: rgba(194, 84, 44, 0.35);
+  transform: rotate(0deg) translateX(5px) !important;
+  box-shadow: 3px 4px 0 rgba(194, 84, 44, 0.18);
+  font-weight: 700;
+  font-family: var(--ifm-heading-font-family);
 }
 
 [data-theme='dark'] .menu__link--active {
-  background-color: rgba(224, 130, 79, 0.2);
+  box-shadow: 3px 4px 0 rgba(224, 130, 79, 0.22);
 }
 
 /* Footer — Infima's `.footer--dark` modifier redeclares its own background
