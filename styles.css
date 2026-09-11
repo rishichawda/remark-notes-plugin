@@ -47,6 +47,7 @@ blockquote[class*="remark-note"]:hover {
   height: 1.05em;
   flex-shrink: 0;
   color: var(--rn-accent, currentColor);
+  stroke: var(--rn-accent, currentColor);
 }
 
 [class*="remark-note-icon"]>svg {
