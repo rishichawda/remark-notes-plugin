@@ -139,6 +139,36 @@ function Playground() {
   );
 }
 
+const INSTALL_COMMAND = 'npm install remark-notes-plugin';
+
+function InstallCommand() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(INSTALL_COMMAND);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // clipboard API unavailable (e.g. insecure context) — fail silently, the text is still selectable
+    }
+  };
+
+  return (
+    <button type="button" className={styles.installCommand} onClick={copy} aria-label="Copy install command">
+      <code>{INSTALL_COMMAND}</code>
+      <span className={styles.copyIcon} aria-hidden="true">
+        {copied ? '✓' : (
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" strokeWidth="1.5"/>
+          </svg>
+        )}
+      </span>
+    </button>
+  );
+}
+
 function HomepageHeader() {
   return (
     <header className={styles.hero}>
@@ -156,7 +186,7 @@ function HomepageHeader() {
           Five styled note types for your markdown. Write <code>{'[!tip]'}</code>, get a tip. No config, no fuss.
         </p>
         <div className={styles.heroActions}>
-          <code className={styles.installCommand}>npm install remark-notes-plugin</code>
+          <InstallCommand />
           <Link className={styles.getStarted} to="/docs/intro">
             Get Started
           </Link>
