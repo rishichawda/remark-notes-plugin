@@ -141,7 +141,7 @@ function HomepageHeader() {
     <header className={styles.hero}>
       <div className="container">
         <Heading as="h1" className={styles.heroTitle}>
-          Blockquotes with something to say.
+          Blockquotes with <span className={styles.heroTitleAccent}>something to say.</span>
         </Heading>
         <p className={styles.heroTagline}>
           Five styled note types for your markdown. Write <code>{'[!tip]'}</code>, get a tip. No config, no fuss.

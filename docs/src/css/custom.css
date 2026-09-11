@@ -7,52 +7,68 @@
 /* Import remark-notes-plugin styles */
 @import 'remark-notes-plugin/styles.css';
 
-/* You can override the default Infima variables here. */
+/* Warm paper palette instead of the generic SaaS blue/indigo/white every
+   other dev-tool site reaches for — this site's own identity, layered on
+   top of the plugin's calm, unopinionated shipped default. Terracotta
+   accent, cream paper background, ink-brown text. */
 :root {
-  --ifm-color-primary: #667eea;
-  --ifm-color-primary-dark: #4c5fd6;
-  --ifm-color-primary-darker: #4353cf;
-  --ifm-color-primary-darkest: #3543a9;
-  --ifm-color-primary-light: #808dfa;
-  --ifm-color-primary-lighter: #949fff;
-  --ifm-color-primary-lightest: #b8c2ff;
+  --ifm-color-primary: #c2542c;
+  --ifm-color-primary-dark: #a6431f;
+  --ifm-color-primary-darker: #8f3819;
+  --ifm-color-primary-darkest: #742c13;
+  --ifm-color-primary-light: #d97250;
+  --ifm-color-primary-lighter: #e4907a;
+  --ifm-color-primary-lightest: #f2c4b4;
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --ifm-heading-font-weight: 700;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  
+  --ifm-heading-font-weight: 800;
+  --docusaurus-highlighted-code-line-bg: rgba(194, 84, 44, 0.1);
+
+  --ifm-background-color: #faf6ee;
+  --ifm-background-surface-color: #f3ecdd;
+  --ifm-footer-background-color: #2a231c;
+  --ifm-font-color-base: #2a231c;
+
   /* Custom color palette */
   --color-note: #318CE7;
   --color-tip: #7ccf00;
   --color-important: #EF9B0F;
   --color-quote: #8C92AC;
   --color-bonus: #9966CC;
-  
+
+  /* Paper grain: a faint dot grid, like graph paper */
+  --paper-texture: radial-gradient(circle at 1px 1px, rgba(42, 35, 28, 0.08) 1px, transparent 0);
+  --paper-texture-size: 15px 15px;
+
   /* Spacing */
   --ifm-leading: 1.6;
   --ifm-spacing-horizontal: 1.5rem;
   --ifm-spacing-vertical: 1.5rem;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode: warm near-black instead of the usual cool blue-gray. */
 [data-theme='dark'] {
-  --ifm-color-primary: #818cf8;
-  --ifm-color-primary-dark: #6571f6;
-  --ifm-color-primary-darker: #5663f5;
-  --ifm-color-primary-darkest: #2f40f0;
-  --ifm-color-primary-light: #9da7fa;
-  --ifm-color-primary-lighter: #acb5fb;
-  --ifm-color-primary-lightest: #d8dcfd;
-  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.1);
-  --ifm-background-color: #1a202c;
-  --ifm-background-surface-color: #2d3748;
-  
+  --ifm-color-primary: #e0824f;
+  --ifm-color-primary-dark: #d76e35;
+  --ifm-color-primary-darker: #ca6329;
+  --ifm-color-primary-darkest: #a54f1f;
+  --ifm-color-primary-light: #e9986c;
+  --ifm-color-primary-lighter: #edaa85;
+  --ifm-color-primary-lightest: #f6ccb5;
+  --docusaurus-highlighted-code-line-bg: rgba(224, 130, 79, 0.12);
+  --ifm-background-color: #1c1712;
+  --ifm-background-surface-color: #251e17;
+  --ifm-footer-background-color: #151109;
+  --ifm-font-color-base: #ece3d6;
+
   /* Dark mode note colors - slightly brighter */
   --color-note: #60a5fa;
   --color-tip: #86e62b;
   --color-important: #fbbf24;
   --color-quote: #a5b4c9;
   --color-bonus: #a78bfa;
+
+  --paper-texture: radial-gradient(circle at 1px 1px, rgba(236, 227, 214, 0.06) 1px, transparent 0);
 }
 
 /* Enhanced typography */
@@ -74,14 +90,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Code blocks improvements */
 code {
-  background-color: rgba(102, 126, 234, 0.1);
+  background-color: rgba(194, 84, 44, 0.1);
   border-radius: 4px;
   padding: 0.15rem 0.3rem;
   font-size: 0.9em;
 }
 
 [data-theme='dark'] code {
-  background-color: rgba(129, 140, 248, 0.15);
+  background-color: rgba(224, 130, 79, 0.15);
 }
 
 pre code {
@@ -117,24 +133,34 @@ pre code {
 }
 
 .menu__link:hover {
-  background-color: rgba(102, 126, 234, 0.1);
+  background-color: rgba(194, 84, 44, 0.1);
 }
 
 [data-theme='dark'] .menu__link:hover {
-  background-color: rgba(129, 140, 248, 0.15);
+  background-color: rgba(224, 130, 79, 0.15);
 }
 
 .menu__link--active {
-  background-color: rgba(102, 126, 234, 0.15);
+  background-color: rgba(194, 84, 44, 0.15);
   font-weight: 600;
 }
 
 [data-theme='dark'] .menu__link--active {
-  background-color: rgba(129, 140, 248, 0.2);
+  background-color: rgba(224, 130, 79, 0.2);
 }
 
-/* Footer — relies on Docusaurus's built-in `style: 'dark'` footer theme
-   (see docusaurus.config.ts) instead of a custom gradient. */
+/* Footer — Infima's `.footer--dark` modifier redeclares its own background
+   variable locally (which wins over a :root override, since a directly
+   specified value always beats an inherited one), so it's set directly
+   here instead of relying on the custom property. */
+.footer.footer--dark {
+  background-color: #2a231c;
+}
+
+[data-theme='dark'] .footer.footer--dark {
+  background-color: #151109;
+}
+
 .footer__title {
   font-weight: 700;
 }
@@ -264,14 +290,39 @@ pre code {
 [data-theme='light'] blockquote[class*="remark-note-quote"] { --rn-accent: #8C92AC; }
 [data-theme='light'] blockquote[class*="remark-note-bonus"] { --rn-accent: #9966CC; }
 
-/* This site's own signature: notes tilt slightly on hover, like a real
-   note pinned to the page. The plugin's shipped default stylesheet stays
-   calm and unopinionated for anyone building on it — this flourish lives
-   here, in this site's own presentation layer, not in what we hand out. */
+/* This site's own signature: notes sit scattered and slightly askew, like
+   they're actually pinned to the page rather than stacked in a clean list
+   — and straighten up when you touch them. The plugin's shipped default
+   stylesheet stays calm and unopinionated for anyone building on it; this
+   flourish lives here, in this site's own presentation layer only. */
 blockquote[class*="remark-note"] {
-  transition: transform 0.15s ease, background-color 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  box-shadow: 3px 4px 0 rgba(42, 35, 28, 0.08);
 }
 
+[data-theme='dark'] blockquote[class*="remark-note"] {
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+blockquote[class*="remark-note"]:nth-of-type(3n+1) { transform: rotate(-1.4deg); }
+blockquote[class*="remark-note"]:nth-of-type(3n+2) { transform: rotate(1.1deg); }
+blockquote[class*="remark-note"]:nth-of-type(3n+3) { transform: rotate(-0.8deg); }
+
 blockquote[class*="remark-note"]:hover {
-  transform: rotate(-0.5deg) translateY(-1px);
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 4px 6px 0 rgba(42, 35, 28, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme='dark'] blockquote[class*="remark-note"]:hover {
+  box-shadow: 4px 6px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Paper grain on the areas that read as "the desk" — hero and playground. */
+[class^="hero"],
+[class*=" hero"],
+[class*="playground"] {
+  background-image: var(--paper-texture);
+  background-size: var(--paper-texture-size);
 }

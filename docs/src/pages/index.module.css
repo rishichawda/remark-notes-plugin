@@ -11,6 +11,11 @@
   margin-bottom: 0.6rem;
 }
 
+.heroTitleAccent {
+  color: var(--ifm-color-primary);
+  font-style: italic;
+}
+
 .heroTagline {
   font-size: 1.15rem;
   color: var(--ifm-color-emphasis-700);
