@@ -297,10 +297,22 @@ pre code {
 }
 
 
-/* Dark mode styles */
-[data-theme='dark'] .remark-note {
-  background-color: var(--ifm-color-emphasis-200);
-}
+/* Bridge remark-notes-plugin's accent custom property to Docusaurus's
+   manual dark-mode toggle. The plugin's own stylesheet only switches via
+   prefers-color-scheme (OS-level); these selectors win on specificity so
+   the notes stay correct even when a reader's OS and their toggle
+   disagree in either direction. */
+[data-theme='dark'] blockquote[class*="remark-note-note"] { --rn-accent: #60a5fa; }
+[data-theme='dark'] blockquote[class*="remark-note-tip"] { --rn-accent: #86e62b; }
+[data-theme='dark'] blockquote[class*="remark-note-important"] { --rn-accent: #fbbf24; }
+[data-theme='dark'] blockquote[class*="remark-note-quote"] { --rn-accent: #a5b4c9; }
+[data-theme='dark'] blockquote[class*="remark-note-bonus"] { --rn-accent: #a78bfa; }
+
+[data-theme='light'] blockquote[class*="remark-note-note"] { --rn-accent: #318CE7; }
+[data-theme='light'] blockquote[class*="remark-note-tip"] { --rn-accent: #7ccf00; }
+[data-theme='light'] blockquote[class*="remark-note-important"] { --rn-accent: #EF9B0F; }
+[data-theme='light'] blockquote[class*="remark-note-quote"] { --rn-accent: #8C92AC; }
+[data-theme='light'] blockquote[class*="remark-note-bonus"] { --rn-accent: #9966CC; }
 
 /* Demo section styles */
 .demo-section {
