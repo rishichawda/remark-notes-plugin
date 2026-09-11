@@ -1,72 +1,43 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-// import GitHubRepo from '@site/src/components/GitHubRepo';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 import 'remark-notes-plugin/styles.css';
 
-// Import the SVG logo
-import Logo from '@site/static/img/logo.svg';
-
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero', styles.heroBanner)}>
+    <header className={styles.hero}>
       <div className="container">
-        <div className={styles.heroContent}>
-          <div className={styles.logoContainer}>
-            <Logo className={styles.heroLogo} role="img" aria-label="Remark Notes Plugin Logo" />
-          </div>
-          <Heading as="h1" className={styles.heroTitle}>
-            {siteConfig.title}
-          </Heading>
-          <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <p className={styles.heroDescription}>
-            A powerful remark plugin that transforms simple markdown blockquotes into beautiful, 
-            professional note components. Perfect for documentation, blogs, and technical writing.
-          </p>
-          <div className={styles.buttons}>
-            <Link
-              className={clsx('button button--lg', styles.buttonPrimary)}
-              to="/docs/intro">
-              Get Started →
-            </Link>
-            <Link
-              className={clsx('button button--outline button--lg', styles.buttonSecondary)}
-              href="https://github.com/rishichawda/remark-notes-plugin">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" style={{marginRight: '8px'}}>
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-              </svg>
-              GitHub
-            </Link>
-          </div>
-          <div className={styles.quickStart}>
-            <code className={styles.installCommand}>npm install remark-notes-plugin</code>
-          </div>
+        <Heading as="h1" className={styles.heroTitle}>
+          {siteConfig.title}
+        </Heading>
+        <p className={styles.heroTagline}>{siteConfig.tagline}</p>
+        <div className={styles.heroActions}>
+          <code className={styles.installCommand}>npm install remark-notes-plugin</code>
+          <Link className={styles.getStarted} to="/docs/intro">
+            Get Started
+          </Link>
+          <Link className={styles.githubLink} href="https://github.com/rishichawda/remark-notes-plugin">
+            GitHub
+          </Link>
         </div>
       </div>
     </header>
   );
 }
 
-function LiveDemo() {
+function DemoSection() {
   return (
-    <section className={styles.demoSection}>
+    <section className={styles.demo}>
       <div className="container">
-        <Heading as="h2" className={styles.sectionTitle}>
-          See It In Action
-        </Heading>
-        <p className={styles.sectionSubtitle}>
-          Five beautiful note types to enhance your content
-        </p>
         <div className={styles.demoGrid}>
-          <div className={styles.demoColumn}>
-            <h3 className={styles.demoHeading}>Markdown Input</h3>
+          <div>
+            <p className={styles.demoLabel}>Markdown in</p>
             <pre className={styles.demoCode}>
               {`> [!note]
 > Perfect for general information
@@ -89,8 +60,8 @@ function LiveDemo() {
 > advanced techniques.`}
             </pre>
           </div>
-          <div className={styles.demoColumn}>
-            <h3 className={styles.demoHeading}>Rendered Output</h3>
+          <div>
+            <p className={styles.demoLabel}>Rendered out</p>
             <div className={styles.demoNotes}>
               <blockquote className="remark-note remark-note-note">
                 <div className="remark-note-header">
@@ -184,16 +155,9 @@ export default function Home(): ReactNode {
       title={siteConfig.title}
       description="A powerful remark plugin that transforms markdown blockquotes into beautiful, professional note components">
       <HomepageHeader />
+      <DemoSection />
       <main>
         <HomepageFeatures />
-        {/* <LiveDemo /> */}
-        {/* <div className="container margin-vert--lg">
-          <div className="row">
-            <div className="col col--8 col--offset-2">
-              <GitHubRepo owner="rishichawda" repo="remark-notes-plugin" />
-            </div>
-          </div>
-        </div> */}
       </main>
     </Layout>
   );
