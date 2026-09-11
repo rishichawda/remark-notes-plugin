@@ -1,25 +1,41 @@
+/**
+ * Default styles for remark-notes-plugin
+ * Left-rule minimal recipe: quiet at rest, present on hover.
+ * Adaptable: tints/borders composite over `transparent` via color-mix(), so
+ * they work on any host page background. Per-type accent lives in
+ * --rn-accent; consumers with their own dark-mode toggle (e.g. a
+ * [data-theme="dark"] attribute instead of OS-level prefers-color-scheme)
+ * can override it directly under their own selector.
+ */
+
 /* Base note container */
 blockquote[class*="remark-note"] {
   /* Reset blockquote defaults */
   margin: 1.5rem 0;
-  padding: 1.25rem;
+  padding: 0.85rem 1.1rem;
   quotes: none;
   font-weight: normal;
   font-style: normal;
 
-  /* Custom note styles */
-  border-radius: 0.5rem;
-  border: 1px solid;
+  /* Left-rule minimal shell */
+  border: none;
+  border-left: 3px solid var(--rn-accent, currentColor);
+  border-radius: 0 6px 6px 0;
+  background-color: color-mix(in srgb, var(--rn-accent, currentColor) 4%, transparent);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.18s ease;
+}
+
+blockquote[class*="remark-note"]:hover {
+  background-color: color-mix(in srgb, var(--rn-accent, currentColor) 8%, transparent);
 }
 
 /* Header styles */
 [class*="remark-note-header"] {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.55rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Icon styles */
@@ -27,106 +43,43 @@ blockquote[class*="remark-note"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 0.5rem;
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  color: var(--rn-accent, currentColor);
 }
 
 [class*="remark-note-icon"]>svg {
-  width: auto;
+  width: 100%;
   height: 100%;
-  fill: none;
 }
 
 /* Title styles */
 [class*="remark-note-title"] {
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.025em;
-  line-height: 0.85rem;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--rn-accent, currentColor);
 }
 
 /* Content styles */
 [class*="remark-note-content"] {
-  color: #1F2937;
+  color: inherit;
   line-height: 1.625;
   font-size: 1rem;
-  /* margin-left: 2.75rem; */
 }
 
-/* Note type: Note (Light Blue) */
-blockquote[class*="remark-note-note"] {
-  background-color: #318CE710;
-  border-color: #318CE7;
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
-}
+/* Per-type accent (light default) */
+blockquote[class*="remark-note-note"] { --rn-accent: #318CE7; }
+blockquote[class*="remark-note-tip"] { --rn-accent: #7ccf00; }
+blockquote[class*="remark-note-important"] { --rn-accent: #EF9B0F; }
+blockquote[class*="remark-note-quote"] { --rn-accent: #8C92AC; }
+blockquote[class*="remark-note-bonus"] { --rn-accent: #9966CC; }
 
-blockquote[class*="remark-note-note"] [class*="remark-note-icon"] {
-  stroke: #318CE7;
-}
-
-blockquote[class*="remark-note-note"] [class*="remark-note-title"] {
-  color: #318CE7;
-}
-
-/* Note type: Important (Purple) */
-blockquote[class*="remark-note-important"] {
-  background-color: #EF9B0F10;
-  border-color: #EF9B0F;
-  box-shadow: 0 4px 6px -1px rgba(147, 51, 234, 0.1), 0 2px 4px -2px rgba(147, 51, 234, 0.1);
-}
-
-blockquote[class*="remark-note-important"] [class*="remark-note-icon"] {
-  color: #EF9B0F;
-}
-
-blockquote[class*="remark-note-important"] [class*="remark-note-title"] {
-  color: #EF9B0F;
-}
-
-/* Note type: Quote (Gray) */
-blockquote[class*="remark-note-quote"] {
-  background-color: #8C92AC10;
-  border-color: #8C92AC;
-  box-shadow: 0 4px 6px -1px rgba(75, 85, 99, 0.1), 0 2px 4px -2px rgba(75, 85, 99, 0.1);
-}
-
-blockquote[class*="remark-note-quote"] [class*="remark-note-icon"] {
-  stroke: #8C92AC;
-}
-
-blockquote[class*="remark-note-quote"] [class*="remark-note-title"] {
-  color: #8C92AC;
-}
-
-/* Note type: Bonus (Pink) */
-blockquote[class*="remark-note-bonus"] {
-  background-color: #9966CC10;
-  border-color: #9966CC;
-  box-shadow: 0 4px 6px -1px rgba(219, 39, 119, 0.1), 0 2px 4px -2px rgba(219, 39, 119, 0.1);
-}
-
-blockquote[class*="remark-note-bonus"] [class*="remark-note-icon"] {
-  stroke: #9966CC;
-}
-
-blockquote[class*="remark-note-bonus"] [class*="remark-note-title"] {
-  color: #9966CC;
-}
-
-/* Note type: Tip (Light Blue - same as Note) */
-blockquote[class*="remark-note-tip"] {
-  background-color: #7ccf0010;
-  border-color: #7ccf00;
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -2px rgba(59, 130, 246, 0.1);
-}
-
-blockquote[class*="remark-note-tip"] [class*="remark-note-icon"]>svg {
-  stroke: #7ccf00;
-}
-
-blockquote[class*="remark-note-tip"] [class*="remark-note-title"] {
-  color: #7ccf00;
+/* Per-type accent (OS dark mode) */
+@media (prefers-color-scheme: dark) {
+  blockquote[class*="remark-note-note"] { --rn-accent: #60a5fa; }
+  blockquote[class*="remark-note-tip"] { --rn-accent: #86e62b; }
+  blockquote[class*="remark-note-important"] { --rn-accent: #fbbf24; }
+  blockquote[class*="remark-note-quote"] { --rn-accent: #a5b4c9; }
+  blockquote[class*="remark-note-bonus"] { --rn-accent: #a78bfa; }
 }
