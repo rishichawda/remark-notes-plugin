@@ -1,3 +1,9 @@
+---
+title: Customization
+---
+
+<span class="handwritten pageKicker">the styling</span>
+
 # Customization
 
 ## CSS class reference

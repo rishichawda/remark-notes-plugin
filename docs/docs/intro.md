@@ -1,3 +1,9 @@
+---
+title: Introduction
+---
+
+<span class="handwritten pageKicker">the basics</span>
+
 # Introduction
 
 `remark-notes-plugin` turns markdown blockquotes into styled note components.

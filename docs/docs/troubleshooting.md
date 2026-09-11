@@ -1,3 +1,9 @@
+---
+title: Troubleshooting
+---
+
+<span class="handwritten pageKicker">when it breaks</span>
+
 # Troubleshooting
 
 ## Installation issues

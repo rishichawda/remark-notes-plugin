@@ -1,3 +1,9 @@
+---
+title: API Reference
+---
+
+<span class="handwritten pageKicker">the reference</span>
+
 # API Reference
 
 ## `remarkNotes(options?)`

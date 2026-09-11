@@ -1,3 +1,9 @@
+---
+title: Framework Integration
+---
+
+<span class="handwritten pageKicker">the setups</span>
+
 # Framework Integration
 
 ## Next.js

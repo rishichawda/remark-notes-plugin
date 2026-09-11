@@ -102,6 +102,43 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+/* Page kicker: a small handwritten label above each doc page's H1, the
+   same annotation language as the homepage's "poke it" label — ties the
+   whole site to one idea instead of the homepage being the only page
+   that got real design attention. */
+.pageKicker {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: var(--ifm-color-primary);
+  transform: rotate(-2deg);
+  margin-bottom: -0.5rem;
+}
+
+/* Code blocks: warm-tinted chrome instead of a generic gray border,
+   consistent with the rest of the palette. Syntax highlighting itself
+   stays on the Prism theme — only the frame changes. */
+.theme-code-block {
+  border: 1px solid rgba(194, 84, 44, 0.18);
+}
+
+[data-theme='dark'] .theme-code-block {
+  border-color: rgba(224, 130, 79, 0.2);
+}
+
+/* Tables: give them the same card-like presence as everything else. */
+.markdown table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown table th {
+  background: var(--ifm-color-emphasis-100);
+  font-family: var(--ifm-heading-font-family);
+}
+
 /* Code blocks improvements */
 code {
   background-color: rgba(194, 84, 44, 0.1);
