@@ -7,8 +7,15 @@ import remarkNotes from 'remark-notes-plugin';
 
 const config: Config = {
   title: 'Remark Notes Plugin',
-  tagline: 'Transform markdown blockquotes into beautiful, professional note components',
+  tagline: 'Blockquotes with something to say.',
   favicon: 'img/favicon.ico',
+
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Caveat:wght@500;700&display=swap',
+      type: 'text/css',
+    },
+  ],
 
   // Set the production url of your site here
   url: 'https://rishichawda.github.io',
@@ -72,8 +79,8 @@ const config: Config = {
     announcementBar: {
       id: 'support_us',
       content: '⭐ If you like remark-notes-plugin, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/rishichawda/remark-notes-plugin">GitHub</a>!',
-      backgroundColor: '#667eea',
-      textColor: '#ffffff',
+      backgroundColor: 'var(--ifm-color-emphasis-100)',
+      textColor: 'var(--ifm-font-color-base)',
       isCloseable: true,
     },
     
@@ -96,29 +103,6 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Documentation',
-        },
-        {
-          type: 'dropdown',
-          label: 'Quick Links',
-          position: 'left',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/getting-started/installation',
-            },
-            {
-              label: 'API Reference',
-              to: '/docs/api/overview',
-            },
-            {
-              label: 'Framework Integration',
-              to: '/docs/guides/frameworks',
-            },
-            {
-              label: 'Customization',
-              to: '/docs/customization/styling',
-            },
-          ],
         },
         {
           href: 'https://www.npmjs.com/package/remark-notes-plugin',
@@ -144,12 +128,12 @@ const config: Config = {
               to: '/docs/intro',
             },
             {
-              label: 'Getting Started',
-              to: '/docs/getting-started/installation',
+              label: 'Framework Integration',
+              to: '/docs/frameworks',
             },
             {
               label: 'API Reference',
-              to: '/docs/api/overview',
+              to: '/docs/api-reference',
             },
           ],
         },
@@ -157,16 +141,12 @@ const config: Config = {
           title: 'Resources',
           items: [
             {
-              label: 'Framework Integration',
-              to: '/docs/guides/frameworks',
-            },
-            {
               label: 'Customization',
-              to: '/docs/customization/styling',
+              to: '/docs/customization',
             },
             {
               label: 'Troubleshooting',
-              to: '/docs/guides/troubleshooting',
+              to: '/docs/troubleshooting',
             },
           ],
         },
