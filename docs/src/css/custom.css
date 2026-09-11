@@ -89,23 +89,16 @@ pre code {
   padding: 0;
 }
 
-/* Improved code block styling */
+/* Code blocks */
 .theme-code-block {
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   margin: 1.5rem 0;
 }
 
-/* Navbar enhancements */
+/* Navbar */
 .navbar {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme='dark'] .navbar {
-  background-color: rgba(26, 32, 44, 0.95);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: none;
 }
 
 .navbar__title {
@@ -140,33 +133,10 @@ pre code {
   background-color: rgba(129, 140, 248, 0.2);
 }
 
-/* Footer improvements */
-.footer {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-[data-theme='dark'] .footer {
-  background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
-}
-
+/* Footer — relies on Docusaurus's built-in `style: 'dark'` footer theme
+   (see docusaurus.config.ts) instead of a custom gradient. */
 .footer__title {
-  color: white;
   font-weight: 700;
-}
-
-.footer__link-item {
-  color: rgba(255, 255, 255, 0.9);
-  transition: color 0.2s ease;
-}
-
-.footer__link-item:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.footer__copyright {
-  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Table of Contents improvements */
@@ -189,17 +159,15 @@ pre code {
   font-weight: 600;
 }
 
-/* Pagination improvements */
+/* Pagination */
 .pagination-nav__link {
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-300);
-  transition: all 0.3s ease;
+  transition: border-color 0.15s ease;
 }
 
 .pagination-nav__link:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-  transform: translateY(-2px);
 }
 
 /* Admonition enhancements (keep for other admonitions) */
@@ -219,17 +187,6 @@ pre code {
 
 .markdown a:hover {
   border-bottom-color: var(--ifm-color-primary);
-}
-
-/* Smooth animations */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-}
-
-*:where(:not(:active):not(:focus)) {
-  transition-property: background-color, border-color, color, fill, stroke;
 }
 
 /* Better spacing for content */
@@ -255,19 +212,13 @@ pre code {
   font-style: italic;
 }
 
-/* Enhanced buttons */
+/* Buttons */
 .button {
   border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
 }
 
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Search improvements */
+/* Search */
 .navbar__search-input {
   border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -275,7 +226,6 @@ pre code {
 
 .navbar__search-input:focus {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 /* Responsive improvements */

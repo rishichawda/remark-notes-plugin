@@ -72,8 +72,8 @@ const config: Config = {
     announcementBar: {
       id: 'support_us',
       content: '⭐ If you like remark-notes-plugin, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/rishichawda/remark-notes-plugin">GitHub</a>!',
-      backgroundColor: '#667eea',
-      textColor: '#ffffff',
+      backgroundColor: 'var(--ifm-color-emphasis-100)',
+      textColor: 'var(--ifm-font-color-base)',
       isCloseable: true,
     },
     
