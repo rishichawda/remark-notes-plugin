@@ -53,6 +53,6 @@ Checklist:
 
 - **Gatsby** — GraphQL queries against MDX content work normally; the plugin only affects rendering, not the content schema.
 - **Docusaurus** — its built-in `:::note`/`:::tip` admonitions use different syntax than `> [!note]` and don't conflict, but avoid mixing both styles on the same page for consistency.
-- **VitePress** — uses markdown-it, not remark, by default. You must bridge it explicitly with `md.use(remarkNotes)` — see [Framework Integration → VitePress](./frameworks#vitepress).
+- **VitePress** — uses markdown-it, not remark, by default. You must bridge it explicitly with `md.use(remarkNotes)` — see the VitePress tab on [Framework Integration](./frameworks).
 
 Still stuck? [Open an issue](https://github.com/rishichawda/remark-notes-plugin/issues).

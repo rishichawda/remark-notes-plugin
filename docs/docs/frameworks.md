@@ -2,13 +2,17 @@
 title: Framework Integration
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <span class="handwritten pageKicker">the setups</span>
 
 # Framework Integration
 
-## Next.js
+<Tabs groupId="framework">
+<TabItem value="nextjs" label="Next.js">
 
-App Router (`@next/mdx`):
+**App Router** (`@next/mdx`):
 
 ```javascript
 // next.config.mjs
@@ -24,7 +28,7 @@ export default withMDX({
 });
 ```
 
-Pages Router:
+**Pages Router**:
 
 ```javascript
 // next.config.js
@@ -38,9 +42,10 @@ module.exports = withMDX({
 });
 ```
 
-Processing markdown programmatically (e.g. `getStaticProps`) works the same as [vanilla unified](#vanilla-unifiedremark) below.
+Processing markdown programmatically (e.g. `getStaticProps`) works the same as the **Vanilla unified/remark** tab.
 
-## Astro
+</TabItem>
+<TabItem value="astro" label="Astro">
 
 ```javascript
 // astro.config.mjs
@@ -55,7 +60,8 @@ export default defineConfig({
 });
 ```
 
-## Gatsby
+</TabItem>
+<TabItem value="gatsby" label="Gatsby">
 
 ```bash
 npm install remark-notes-plugin gatsby-plugin-mdx
@@ -78,7 +84,8 @@ module.exports = {
 };
 ```
 
-## Docusaurus
+</TabItem>
+<TabItem value="docusaurus" label="Docusaurus">
 
 This is what this documentation site uses.
 
@@ -97,7 +104,8 @@ const config = {
 
 Docusaurus ships its own `:::note`/`:::tip` admonitions — the two systems coexist fine, but they can visually conflict if you use both in the same page. See [Troubleshooting](./troubleshooting) if they clash.
 
-## VitePress
+</TabItem>
+<TabItem value="vitepress" label="VitePress">
 
 ```typescript
 // .vitepress/config.ts
@@ -125,7 +133,8 @@ export default {
 
 VitePress uses markdown-it, not remark, by default — the `md.use()` call above is what bridges the two; without it the plugin won't run.
 
-## Eleventy (11ty)
+</TabItem>
+<TabItem value="eleventy" label="Eleventy (11ty)">
 
 ```bash
 npm install @11ty/eleventy-plugin-remark remark-notes-plugin
@@ -143,7 +152,8 @@ module.exports = function (eleventyConfig) {
 };
 ```
 
-## Hugo
+</TabItem>
+<TabItem value="hugo" label="Hugo">
 
 Hugo doesn't run remark natively. Preprocess your markdown before Hugo builds:
 
@@ -171,7 +181,8 @@ for (const filepath of glob.sync('content/**/*.md')) {
 { "scripts": { "prebuild": "node scripts/process-markdown.js", "build": "hugo" } }
 ```
 
-## Vanilla unified/remark
+</TabItem>
+<TabItem value="vanilla" label="Vanilla unified/remark">
 
 ```typescript
 import { unified } from 'unified';
@@ -187,6 +198,9 @@ const html = await unified()
   .use(rehypeStringify, { allowDangerousHtml: true })
   .process(markdown);
 ```
+
+</TabItem>
+</Tabs>
 
 ## Configuration best practices
 
