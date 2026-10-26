@@ -85,7 +85,7 @@ const invalid: ValidNoteType = 'warning'; // TypeScript error
 
 ## Environment support
 
-Node.js v14+, remark v13+, ESM. Full TypeScript definitions included. No browser-specific constraints — the generated HTML/CSS works in any modern browser.
+Node.js v22+, remark v13+, ESM. Full TypeScript definitions included. No browser-specific constraints — the generated HTML/CSS works in any modern browser.
 
 ## Error handling
 

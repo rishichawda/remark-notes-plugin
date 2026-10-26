@@ -36,7 +36,7 @@ npm install remark-notes-plugin
 # or: pnpm add remark-notes-plugin
 ```
 
-Requires remark v13+ and Node.js v14+.
+Requires remark v13+ and Node.js v22+.
 
 ## Usage
 
